@@ -29,6 +29,45 @@
     a.addEventListener('click', function () { setDrawer(false); });
   });
 
+  // Marquee: clone logo set to always cover the viewport, keep two identical
+  // halves so the -50% loop wraps seamlessly at any screen width
+  (function setupMarquee() {
+    var track = document.querySelector('.marquee-track');
+    if (!track) return;
+    var kids = Array.prototype.slice.call(track.children);
+    var base = kids.slice(0, Math.floor(kids.length / 2)).map(function (n) { return n.cloneNode(true); });
+    if (!base.length) return;
+    function appendSet() {
+      base.forEach(function (n) { track.appendChild(n.cloneNode(true)); });
+    }
+    function build() {
+      track.style.animation = 'none';
+      track.innerHTML = '';
+      appendSet();
+      var setW = track.getBoundingClientRect().width;
+      if (!setW) { track.style.animation = ''; return; }
+      var copies = Math.max(1, Math.ceil((window.innerWidth * 1.15) / setW));
+      for (var c = 1; c < copies; c++) appendSet();
+      var halfW = track.getBoundingClientRect().width;
+      Array.prototype.slice.call(track.children).forEach(function (n) {
+        var clone = n.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      });
+      track.style.animation = '';
+      track.style.animationDuration = Math.max(18, Math.round(halfW / 70)) + 's';
+    }
+    build();
+    window.addEventListener('load', build);
+    var lastW = window.innerWidth, rt;
+    window.addEventListener('resize', function () {
+      clearTimeout(rt);
+      rt = setTimeout(function () {
+        if (window.innerWidth !== lastW) { lastW = window.innerWidth; build(); }
+      }, 250);
+    });
+  })();
+
   // Services accordion (one open at a time)
   document.querySelectorAll('.srow-head').forEach(function (btn) {
     btn.addEventListener('click', function () {
