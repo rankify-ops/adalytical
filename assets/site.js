@@ -68,6 +68,25 @@
     });
   })();
 
+  // Hero grid: highlight the hovered cell
+  (function setupCellHover() {
+    var hero = document.querySelector('.hero');
+    var grid = document.querySelector('.hero-grid');
+    if (!hero || !grid) return;
+    var cell = document.createElement('div');
+    cell.className = 'hg-cell';
+    grid.appendChild(cell);
+    var size = 164;
+    hero.addEventListener('mousemove', function (e) {
+      var r = grid.getBoundingClientRect();
+      var x = e.clientX - r.left, y = e.clientY - r.top;
+      if (x < 0 || y < 0 || x > r.width || y > r.height) { cell.style.opacity = 0; return; }
+      cell.style.transform = 'translate(' + (Math.floor(x / size) * size) + 'px,' + (Math.floor(y / size) * size) + 'px)';
+      cell.style.opacity = 1;
+    });
+    hero.addEventListener('mouseleave', function () { cell.style.opacity = 0; });
+  })();
+
   // Testimonial rows: same clone-to-fill + exact-halves treatment
   (function setupReviewRows() {
     document.querySelectorAll('.tst-track').forEach(function (track) {

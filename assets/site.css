@@ -118,6 +118,7 @@ img,svg{max-width:100%;display:block}
  background-size:164px 164px;
  -webkit-mask-image:linear-gradient(180deg,#000 72%,transparent 100%);
  mask-image:linear-gradient(180deg,#000 72%,transparent 100%)}
+.hg-cell{position:absolute;top:0;left:0;width:164px;height:164px;background:rgba(28,58,42,.055);opacity:0;transition:opacity .35s ease,transform .16s ease-out;will-change:transform}
 .hg-tag{position:absolute;font-size:.7rem;font-weight:500;letter-spacing:.16em;color:var(--g400)}
 .hg-tag.t1{top:104px;left:26px}
 .hg-tag.t2{bottom:30px;right:30px}
