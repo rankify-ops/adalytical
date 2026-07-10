@@ -150,14 +150,14 @@ img,svg{max-width:100%;display:block}
 .hero-float strong{color:var(--forest);display:block;font-size:.86rem}
 
 /* ================ TRUST STRIP (marquee) ================ */
-.trust-strip{background:var(--forest);color:rgba(255,255,255,.9);padding:20px 0;overflow:hidden;position:relative}
+.trust-strip{background:var(--cream);padding:26px 0;overflow:hidden;position:relative;border-top:1px solid var(--g200);border-bottom:1px solid var(--g200)}
 .trust-strip::before,.trust-strip::after{content:'';position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
-.trust-strip::before{left:0;background:linear-gradient(90deg,var(--forest),transparent)}
-.trust-strip::after{right:0;background:linear-gradient(270deg,var(--forest),transparent)}
+.trust-strip::before{left:0;background:linear-gradient(90deg,var(--cream),transparent)}
+.trust-strip::after{right:0;background:linear-gradient(270deg,var(--cream),transparent)}
 .marquee-track{display:flex;align-items:center;gap:clamp(38px,5vw,72px);width:max-content;animation:mq 36s linear infinite}
 .mq-item{display:flex;align-items:center;white-space:nowrap}
-.mq-item img{height:30px;width:auto;filter:brightness(0) invert(1);opacity:.7;transition:opacity .3s}
-.mq-item:hover img{opacity:1}
+.mq-item img{height:30px;width:auto;filter:brightness(0);opacity:.72;transition:opacity .3s}
+.mq-item:hover img{opacity:.95}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ================ STATS BAND ================ */
