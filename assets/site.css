@@ -297,11 +297,11 @@ img,svg{max-width:100%;display:block}
 .pillus svg{transition:transform .35s var(--ease)}
 
 /* ================ CASE STUDIES — PROJECT CARDS ================ */
-.cs-head{display:grid;grid-template-columns:minmax(120px,250px) 1fr minmax(220px,280px);gap:clamp(20px,3vw,48px);align-items:start;margin-bottom:clamp(36px,4.5vw,60px)}
-.cs-count{font-size:.95rem;font-weight:500;color:var(--g400);padding-top:14px}
-.cs-title h2{font-size:clamp(2.6rem,5vw,4.4rem);font-weight:500;letter-spacing:-.04em;line-height:1;color:var(--forest);margin:0 0 10px}
-.cs-year{font-size:clamp(1.2rem,1.8vw,1.7rem);font-weight:600;color:var(--g900);letter-spacing:-.02em}
-.cs-note{font-size:.9rem;color:var(--g500);line-height:1.65;padding-top:44px}
+#results{padding-top:clamp(64px,7vw,96px)}
+.cs-head{display:grid;grid-template-columns:1fr minmax(220px,280px);gap:clamp(20px,3vw,48px);align-items:end;margin-bottom:clamp(36px,4.5vw,60px)}
+.cs-title h2{font-size:clamp(2.1rem,3.8vw,3.6rem);font-weight:600;letter-spacing:-.04em;line-height:1.08;color:var(--forest);margin:0 0 8px}
+.cs-year{font-size:clamp(1.1rem,1.6vw,1.5rem);font-weight:600;color:var(--g900);letter-spacing:-.02em}
+.cs-note{font-size:.9rem;color:var(--g500);line-height:1.65;padding-bottom:6px}
 .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .proj{display:block;background:#fff;border:1px solid rgba(30,55,40,.06);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-s);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .proj:hover{transform:translateY(-4px);box-shadow:var(--shadow-l)}
@@ -401,8 +401,7 @@ img,svg{max-width:100%;display:block}
   .xgrid.x3,.tst-grid{grid-template-columns:1fr;gap:16px}
   .stats{grid-template-columns:1fr 1fr;gap:32px 24px}
   .cs-head{grid-template-columns:1fr;gap:14px}
-  .cs-count{padding-top:0}
-  .cs-note{padding-top:0;max-width:420px}
+  .cs-note{padding-bottom:0;max-width:420px}
   .proj-grid{grid-template-columns:1fr}
   .band-top{display:flex;flex-direction:column;gap:18px}
   .band-title2{gap:24px}
