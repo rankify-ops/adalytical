@@ -29,18 +29,67 @@
     a.addEventListener('click', function () { setDrawer(false); });
   });
 
-  // Fade-in on scroll
-  var faders = document.querySelectorAll('.fade');
+  // Count-up numbers
+  function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+  function startCount(el) {
+    if (el.dataset.done) return;
+    el.dataset.done = '1';
+    var target = parseFloat(el.dataset.target);
+    if (isNaN(target)) return;
+    var dec = parseInt(el.dataset.decimals || '0', 10);
+    var prefix = el.dataset.prefix || '';
+    var suffix = el.dataset.suffix || '';
+    var group = el.dataset.group === '1';
+    var dur = 1400;
+    var t0 = null;
+    function frame(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      var val = target * easeOutCubic(p);
+      var txt = dec ? val.toFixed(dec) : Math.round(val).toString();
+      if (group) txt = Number(txt).toLocaleString('en-US');
+      el.textContent = prefix + txt + suffix;
+      if (p < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Section-by-section reveal with staggered children
+  var secs = document.querySelectorAll('.rvsec');
+  secs.forEach(function (sec) {
+    sec.querySelectorAll('.rv').forEach(function (el, i) {
+      el.style.setProperty('--i', i);
+    });
+  });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+        if (e.isIntersecting) {
+          e.target.classList.add('vis');
+          e.target.querySelectorAll('.cnt').forEach(startCount);
+          io.unobserve(e.target);
+        }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-    faders.forEach(function (el) { io.observe(el); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    secs.forEach(function (sec) { io.observe(sec); });
   } else {
-    faders.forEach(function (el) { el.classList.add('vis'); });
+    secs.forEach(function (sec) {
+      sec.classList.add('vis');
+      sec.querySelectorAll('.cnt').forEach(startCount);
+    });
   }
+
+  // Safety: force-reveal anything already in the viewport if IO hasn't fired
+  setTimeout(function () {
+    secs.forEach(function (sec) {
+      if (sec.classList.contains('vis')) return;
+      var r = sec.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) {
+        sec.classList.add('vis');
+        sec.querySelectorAll('.cnt').forEach(startCount);
+      }
+    });
+  }, 1200);
 
   // Current year in footer
   var yr = document.getElementById('year');
