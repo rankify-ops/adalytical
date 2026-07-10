@@ -142,7 +142,8 @@ img,svg{max-width:100%;display:block}
 .vis .hero-values li:nth-child(2) [pathLength]{transition-delay:.65s}
 .vis .hero-values li:nth-child(3) [pathLength]{transition-delay:.8s}
 .vis .hero-values li:nth-child(4) [pathLength]{transition-delay:.95s}
-.hero-float{position:absolute;bottom:-22px;right:-14px;background:#fff;border:1px solid var(--g200);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow-l);display:flex;align-items:center;gap:12px;max-width:250px}
+.hero-float{position:absolute;bottom:-34px;right:-14px;background:#fff;border:1px solid var(--g200);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow-l);display:flex;align-items:center;gap:12px;max-width:250px}
+@media(min-width:941px){.hero-values li:last-child{padding-right:110px}}
 .hero-float .hf-dot{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--mint),var(--brand));display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
 .hero-float .hf-dot svg{width:20px;height:20px}
 .hero-float p{font-size:.8rem;color:var(--g600);line-height:1.4}
