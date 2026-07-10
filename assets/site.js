@@ -29,6 +29,22 @@
     a.addEventListener('click', function () { setDrawer(false); });
   });
 
+  // Services accordion (one open at a time)
+  document.querySelectorAll('.srow-head').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var row = btn.closest('.srow');
+      var wasOpen = row.classList.contains('open');
+      document.querySelectorAll('.srow.open').forEach(function (r) {
+        r.classList.remove('open');
+        r.querySelector('.srow-head').setAttribute('aria-expanded', 'false');
+      });
+      if (!wasOpen) {
+        row.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
   // Count-up numbers
   function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
   function startCount(el) {
