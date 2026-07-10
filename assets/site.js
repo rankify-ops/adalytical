@@ -68,6 +68,43 @@
     });
   })();
 
+  // Testimonial rows: same clone-to-fill + exact-halves treatment
+  (function setupReviewRows() {
+    document.querySelectorAll('.tst-track').forEach(function (track) {
+      var base = Array.prototype.slice.call(track.children).map(function (n) { return n.cloneNode(true); });
+      if (!base.length) return;
+      function appendSet() {
+        base.forEach(function (n) { track.appendChild(n.cloneNode(true)); });
+      }
+      function build() {
+        track.style.animation = 'none';
+        track.innerHTML = '';
+        appendSet();
+        var setW = track.getBoundingClientRect().width;
+        if (!setW) { track.style.animation = ''; return; }
+        var copies = Math.max(1, Math.ceil((window.innerWidth * 1.15) / setW));
+        for (var c = 1; c < copies; c++) appendSet();
+        var halfW = track.getBoundingClientRect().width;
+        Array.prototype.slice.call(track.children).forEach(function (n) {
+          var clone = n.cloneNode(true);
+          clone.setAttribute('aria-hidden', 'true');
+          track.appendChild(clone);
+        });
+        track.style.animation = '';
+        track.style.animationDuration = Math.max(24, Math.round(halfW / 55)) + 's';
+      }
+      build();
+      window.addEventListener('load', build);
+      var lastW = window.innerWidth, rt;
+      window.addEventListener('resize', function () {
+        clearTimeout(rt);
+        rt = setTimeout(function () {
+          if (window.innerWidth !== lastW) { lastW = window.innerWidth; build(); }
+        }, 250);
+      });
+    });
+  })();
+
   // Services accordion (one open at a time)
   document.querySelectorAll('.srow-head').forEach(function (btn) {
     btn.addEventListener('click', function () {
