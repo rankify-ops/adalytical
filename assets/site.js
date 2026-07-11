@@ -76,12 +76,12 @@
     var grid = document.querySelector('.hero-grid');
     if (!grid) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var SIZE = 164, OFFY = 64, STEP = 560, MAX_STEPS = 8;
+    var SIZE = 164, OFFY = 0, STEP = 560, MAX_STEPS = 8;
     var occupied = {};
 
     function dims() {
       var r = grid.getBoundingClientRect();
-      return { cols: Math.ceil(r.width / SIZE), rows: Math.ceil((r.height - OFFY) / SIZE) };
+      return { cols: Math.ceil(r.width / SIZE), rows: Math.ceil(r.height / SIZE) };
     }
     // blocked if this cell or any of its 8 neighbours is held by another walker
     function blocked(col, row, mine) {
