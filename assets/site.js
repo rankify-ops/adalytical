@@ -93,16 +93,6 @@
       var W = Math.max(1, frameRight - frameLeft);
       var N = Math.max(1, Math.round(W / 164));
       var cw = W / N;
-      var GRID_TOP = 64;
-      // snap the hero height to a whole number of cube rows so the bottom row is full
-      var heroEl = grid.parentElement;
-      var stats = heroEl.querySelector('.hero-stats');
-      if (stats) {
-        var contentBottomRel = stats.getBoundingClientRect().bottom - heroEl.getBoundingClientRect().top;
-        var k = Math.max(1, Math.ceil((contentBottomRel + 22 - GRID_TOP) / cw));
-        heroEl.style.minHeight = (GRID_TOP + k * cw) + 'px';
-        heroEl.style.paddingBottom = '0px';
-      }
       var gr = grid.getBoundingClientRect();
       var clInGrid = frameLeft - gr.left;            // frame-left within the grid box
       lay = {
