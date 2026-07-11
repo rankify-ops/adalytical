@@ -93,6 +93,17 @@
       var W = Math.max(1, frameRight - frameLeft);
       var N = Math.max(1, Math.round(W / 164));
       var cw = W / N;
+      // snap the hero height to whole cube rows so its bottom row is a full cube
+      // (matches the strip's cube height and keeps the last row from clipping)
+      var GRID_TOP = 63;
+      var heroEl = grid.parentElement;
+      var statsEl = heroEl.querySelector('.hero-stats');
+      if (statsEl) {
+        var contentBottomRel = statsEl.getBoundingClientRect().bottom - heroEl.getBoundingClientRect().top;
+        var k = Math.max(1, Math.ceil((contentBottomRel + 18 - GRID_TOP) / cw));
+        heroEl.style.minHeight = (GRID_TOP + k * cw) + 'px';
+        heroEl.style.paddingBottom = '0px';
+      }
       var gr = grid.getBoundingClientRect();
       var clInGrid = frameLeft - gr.left;            // frame-left within the grid box
       lay = {
