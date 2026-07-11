@@ -191,10 +191,10 @@ img,svg{max-width:100%;display:block}
 .trust-strip::after{left:var(--frame-right,calc(100% - 90px))}
 /* static wrapper carries the fade mask so it doesn't scroll with the logos;
    logos fade out exactly at the two frame lines */
-.strip-inner{position:absolute;inset:0;display:flex;align-items:center;
+.strip-inner{position:absolute;inset:0;
  -webkit-mask:linear-gradient(90deg,transparent 0,transparent var(--frame-left,90px),#000 calc(var(--frame-left,90px) + 34px),#000 calc(var(--frame-right,calc(100% - 90px)) - 34px),transparent var(--frame-right,calc(100% - 90px)),transparent 100%);
  mask:linear-gradient(90deg,transparent 0,transparent var(--frame-left,90px),#000 calc(var(--frame-left,90px) + 34px),#000 calc(var(--frame-right,calc(100% - 90px)) - 34px),transparent var(--frame-right,calc(100% - 90px)),transparent 100%)}
-.marquee-track{display:flex;align-items:center;width:max-content;animation:mq 36s linear infinite;will-change:transform}
+.marquee-track{display:flex;align-items:center;height:100%;width:max-content;animation:mq 36s linear infinite;will-change:transform}
 .mq-item{display:flex;align-items:center;white-space:nowrap;margin-right:clamp(38px,5vw,72px)}
 .mq-item img{height:30px;width:auto;opacity:.9;transition:opacity .3s}
 .mq-item:hover img{opacity:1}
