@@ -104,10 +104,12 @@ img,svg{max-width:100%;display:block}
 .shead-t .dim{color:var(--g400);display:block}
 
 /* ================ HERO ================ */
-.hero{padding:158px 0 32px;position:relative;overflow:hidden;background:linear-gradient(165deg,#f8f7f0 0%,rgba(38,138,83,.05) 38%,#f6f5ed 62%,#f7f6f0 100%)}
-.hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:
-  radial-gradient(ellipse 65% 50% at 74% 16%,rgba(38,138,83,.08),transparent 68%),
-  radial-gradient(ellipse 50% 45% at 12% 86%,rgba(92,194,150,.06),transparent 60%)}
+/* hero + logo strip share one continuous background so the strip matches the hero */
+.hero-wrap{position:relative;overflow:hidden;background:linear-gradient(168deg,#f8f7f0 0%,rgba(38,138,83,.05) 32%,#f6f5ed 55%,#f4f4ec 78%,#f5f5ed 100%)}
+.hero-wrap::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:
+  radial-gradient(ellipse 60% 34% at 74% 13%,rgba(38,138,83,.08),transparent 66%),
+  radial-gradient(ellipse 46% 34% at 12% 72%,rgba(92,194,150,.07),transparent 60%)}
+.hero{padding:158px 0 32px;position:relative;overflow:hidden;background:transparent}
 .hero-grid{position:absolute;top:63px;left:0;right:0;bottom:0;z-index:1;pointer-events:none;
  background-image:
   radial-gradient(circle,rgba(28,58,42,.14) 1.2px,transparent 1.7px),
@@ -184,7 +186,7 @@ img,svg{max-width:100%;display:block}
 .hero-float strong{color:var(--forest);display:block;font-size:.86rem}
 
 /* ================ TRUST STRIP (marquee) ================ */
-.trust-strip{background:transparent;height:var(--cell,120px);min-height:96px;overflow:hidden;position:relative;border-bottom:1px solid var(--g200)}
+.trust-strip{background:transparent;height:var(--cell,120px);min-height:96px;overflow:hidden;position:relative;border-top:1px solid var(--g200);border-bottom:1px solid var(--g200)}
 /* the hero's content-edge frame lines continue straight through the strip */
 .trust-strip::before,.trust-strip::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:rgba(28,58,42,.05);z-index:3;pointer-events:none}
 .trust-strip::before{left:var(--frame-left,90px)}
