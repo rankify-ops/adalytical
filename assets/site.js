@@ -119,6 +119,22 @@
       root.setProperty('--cell', cw + 'px');
       root.setProperty('--frame-left', Math.round(frameLeft) + 'px');
       root.setProperty('--frame-right', Math.round(frameRight) + 'px');
+      // center the little cube clusters in cube cells (the diamond sparkles stay put)
+      var spots = [[0.9, 0.16], [0.9, 0.82], [0.08, 0.78]];
+      grid.querySelectorAll('.hg-cluster').forEach(function (el, i) {
+        var f = spots[i] || spots[spots.length - 1];
+        var col = Math.round((f[0] * gr.width - lay.x0 - lay.cw / 2) / lay.cw);
+        var row = Math.round((f[1] * gr.height - lay.cw / 2) / lay.cw);
+        var cx = lay.x0 + col * lay.cw + lay.cw / 2;
+        var cy = row * lay.cw + lay.cw / 2;
+        cx = Math.max(lay.cw / 2, Math.min(cx, gr.width - lay.cw / 2));
+        cy = Math.max(lay.cw / 2, Math.min(cy, gr.height - lay.cw / 2));
+        el.style.left = cx + 'px';
+        el.style.top = cy + 'px';
+        el.style.right = 'auto';
+        el.style.bottom = 'auto';
+        el.style.transform = 'translate(-50%,-50%)';
+      });
     }
 
     function blocked(col, row, mine) {
