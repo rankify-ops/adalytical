@@ -76,12 +76,12 @@
     var grid = document.querySelector('.hero-grid');
     if (!grid) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var SIZE = 164, STEP = 560, MAX_STEPS = 8;
+    var SIZE = 164, OFFY = 64, STEP = 560, MAX_STEPS = 8;
     var occupied = {};
 
     function dims() {
       var r = grid.getBoundingClientRect();
-      return { cols: Math.ceil(r.width / SIZE), rows: Math.ceil(r.height / SIZE) };
+      return { cols: Math.ceil(r.width / SIZE), rows: Math.ceil((r.height - OFFY) / SIZE) };
     }
     // blocked if this cell or any of its 8 neighbours is held by another walker
     function blocked(col, row, mine) {
@@ -97,7 +97,7 @@
       var k = col + ',' + row;
       var c = document.createElement('div');
       c.className = 'hg-cell';
-      c.style.transform = 'translate(' + (col * SIZE) + 'px,' + (row * SIZE) + 'px)';
+      c.style.transform = 'translate(' + (col * SIZE) + 'px,' + (row * SIZE + OFFY) + 'px)';
       grid.appendChild(c);
       void c.offsetWidth; // commit opacity:0 so the transition to 1 fires
       c.style.opacity = '1';
