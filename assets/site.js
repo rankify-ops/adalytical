@@ -68,23 +68,57 @@
     });
   })();
 
-  // Hero grid: highlight the hovered cell
-  (function setupCellHover() {
-    var hero = document.querySelector('.hero');
+  // Hero grid: cubes darken in a staircase sequence (right, up, right, up…),
+  // each new cube lighting as the previous returns to normal. A few run at
+  // different points and times across the hero.
+  (function setupCubeSequence() {
     var grid = document.querySelector('.hero-grid');
-    if (!hero || !grid) return;
-    var cell = document.createElement('div');
-    cell.className = 'hg-cell';
-    grid.appendChild(cell);
-    var size = 164;
-    hero.addEventListener('mousemove', function (e) {
+    if (!grid) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var SIZE = 164, STEP = 360, MAX_STEPS = 8;
+
+    function dims() {
       var r = grid.getBoundingClientRect();
-      var x = e.clientX - r.left, y = e.clientY - r.top;
-      if (x < 0 || y < 0 || x > r.width || y > r.height) { cell.style.opacity = 0; return; }
-      cell.style.transform = 'translate(' + (Math.floor(x / size) * size) + 'px,' + (Math.floor(y / size) * size) + 'px)';
-      cell.style.opacity = 1;
-    });
-    hero.addEventListener('mouseleave', function () { cell.style.opacity = 0; });
+      return { cols: Math.ceil(r.width / SIZE), rows: Math.ceil(r.height / SIZE) };
+    }
+    function litCell(col, row) {
+      var c = document.createElement('div');
+      c.className = 'hg-cell';
+      c.style.transform = 'translate(' + (col * SIZE) + 'px,' + (row * SIZE) + 'px)';
+      grid.appendChild(c);
+      void c.offsetWidth; // commit opacity:0 so the transition to 1 fires
+      c.style.opacity = '1';
+      return c;
+    }
+    function fade(c) {
+      if (!c) return;
+      c.style.opacity = '0';
+      setTimeout(function () { if (c.parentNode) c.parentNode.removeChild(c); }, 600);
+    }
+    function walk() {
+      var d = dims();
+      var col = Math.floor(Math.random() * Math.max(1, d.cols - 5));
+      var row = Math.min(d.rows - 1, 3 + Math.floor(Math.random() * Math.max(1, d.rows - 4)));
+      var prev = null, goRight = true, steps = 0;
+      (function step() {
+        if (row < 0 || col >= d.cols || steps >= MAX_STEPS) {
+          fade(prev);
+          setTimeout(walk, 1600 + Math.random() * 2800);
+          return;
+        }
+        var cur = litCell(col, row);
+        fade(prev);
+        prev = cur;
+        if (goRight) col++; else row--;
+        goRight = !goRight;
+        steps++;
+        setTimeout(step, STEP);
+      })();
+    }
+    var walkers = window.innerWidth < 700 ? 1 : 3;
+    for (var i = 0; i < walkers; i++) {
+      setTimeout(walk, i * 1100 + Math.random() * 700);
+    }
   })();
 
   // Testimonial rows: same clone-to-fill + exact-halves treatment
