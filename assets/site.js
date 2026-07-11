@@ -87,13 +87,14 @@
     function computeLayout() {
       var cs = getComputedStyle(ctr);
       var cr = ctr.getBoundingClientRect();
-      var contentLeft = cr.left + parseFloat(cs.paddingLeft);
-      var contentRight = cr.right - parseFloat(cs.paddingRight);
-      var W = Math.max(1, contentRight - contentLeft);
+      var gutter = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gutter')) || 0;
+      var frameLeft = cr.left + parseFloat(cs.paddingLeft) - gutter;   // rail sits a gutter outside the content
+      var frameRight = cr.right - parseFloat(cs.paddingRight) + gutter;
+      var W = Math.max(1, frameRight - frameLeft);
       var N = Math.max(1, Math.round(W / 164));
       var cw = W / N;
       var gr = grid.getBoundingClientRect();
-      var clInGrid = contentLeft - gr.left;          // content-left within the grid box
+      var clInGrid = frameLeft - gr.left;            // frame-left within the grid box
       lay = {
         cw: cw,
         x0: ((clInGrid % cw) + cw) % cw,             // leftmost column line ≥ 0
