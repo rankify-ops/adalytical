@@ -42,7 +42,7 @@ img,svg{max-width:100%;display:block}
 
 /* ================ NAV ================ */
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;transition:background .3s ease,box-shadow .3s ease;background:transparent;border-bottom:1px solid var(--g200)}
-.nav.scrolled{background:var(--cream);box-shadow:0 4px 24px rgba(30,55,40,.06)}
+.nav.scrolled{background:transparent}
 .nav-in{max-width:var(--ctr-max);height:100%;margin:0 auto;padding:0 clamp(22px,4vw,64px);display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo{display:flex;align-items:center;gap:10px}
 .logo .logo-img{height:26px;width:auto;display:block}
@@ -339,6 +339,12 @@ img,svg{max-width:100%;display:block}
 .pillus svg{transition:transform .35s var(--ease)}
 
 /* ================ CASE STUDIES — PROJECT CARDS ================ */
+/* the hero/strip frame lines carry straight on through this section */
+#results{position:relative}
+#results::before,#results::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:rgba(28,58,42,.05);pointer-events:none;z-index:0}
+#results::before{left:var(--frame-left,90px)}
+#results::after{left:var(--frame-right,calc(100% - 90px))}
+#results .ctr{position:relative;z-index:1}
 #results{padding-top:clamp(64px,7vw,96px)}
 .cs-head{display:grid;grid-template-columns:1fr minmax(220px,280px);gap:clamp(20px,3vw,48px);align-items:end;margin-bottom:clamp(36px,4.5vw,60px)}
 .cs-title h2{font-size:clamp(2.1rem,3.8vw,3.6rem);font-weight:600;letter-spacing:-.04em;line-height:1.08;color:var(--forest);margin:0 0 8px}
