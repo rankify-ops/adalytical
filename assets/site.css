@@ -131,7 +131,7 @@ img,svg{max-width:100%;display:block}
 .hg-tag.t2{bottom:30px;right:24px}
 .hg-spark{position:absolute;width:46px;height:46px;color:var(--brand);opacity:.75}
 .hg-spark.s1{top:13%;left:42%;animation:sparkPulse 3.6s ease-in-out infinite}
-.hg-spark.s2{bottom:11%;left:10%;animation:sparkPulse 3.6s ease-in-out 1.8s infinite}
+.hg-spark.s2{top:40%;left:7%;animation:sparkPulse 3.6s ease-in-out 1.8s infinite}
 @keyframes sparkPulse{0%,100%{transform:scale(1) rotate(0deg)}50%{transform:scale(1.18) rotate(22deg)}}
 .hg-cluster{position:absolute;width:50px;height:50px;color:var(--g300)}
 .hg-cluster.c1{top:14%;right:5%}
