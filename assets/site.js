@@ -68,22 +68,42 @@
     });
   })();
 
-  // Hero grid: cubes darken in a staircase sequence (right, up, right, up…),
-  // each new cube lighting as the previous returns to normal. A few run at
-  // different points and times; a shared occupancy map keeps any two from
-  // lighting the same cube or one right next to another.
+  // Hero grid: cube columns are sized to the content container so a column
+  // line lands exactly on each rail (logo-left & CTA-right) — the header rails
+  // and body cube lines become one continuous, evenly-padded frame.
+  // Cubes darken in a staircase sequence (right, up, right, up…), each new
+  // cube lighting as the previous returns to normal; a shared occupancy map
+  // keeps any two walkers from lighting the same or a neighbouring cube.
   (function setupCubeSequence() {
     var grid = document.querySelector('.hero-grid');
-    if (!grid) return;
-    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var SIZE = 164, OFFY = 0, STEP = 560, MAX_STEPS = 8;
+    var ctr = document.querySelector('.hero .ctr');
+    if (!grid || !ctr) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var STEP = 560, MAX_STEPS = 8;
     var occupied = {};
+    var lay = { cw: 164, x0: 0, cols: 1, rows: 1 };
 
-    function dims() {
-      var r = grid.getBoundingClientRect();
-      return { cols: Math.ceil(r.width / SIZE), rows: Math.ceil(r.height / SIZE) };
+    // derive cell size from the content width so columns align to both rails
+    function computeLayout() {
+      var cs = getComputedStyle(ctr);
+      var cr = ctr.getBoundingClientRect();
+      var contentLeft = cr.left + parseFloat(cs.paddingLeft);
+      var contentRight = cr.right - parseFloat(cs.paddingRight);
+      var W = Math.max(1, contentRight - contentLeft);
+      var N = Math.max(1, Math.round(W / 164));
+      var cw = W / N;
+      var gr = grid.getBoundingClientRect();
+      var clInGrid = contentLeft - gr.left;          // content-left within the grid box
+      lay = {
+        cw: cw,
+        x0: ((clInGrid % cw) + cw) % cw,             // leftmost column line ≥ 0
+        cols: Math.ceil(gr.width / cw) + 1,
+        rows: Math.ceil(gr.height / cw) + 1
+      };
+      grid.style.backgroundSize = cw + 'px ' + cw + 'px';
+      grid.style.backgroundPosition = clInGrid + 'px 0px'; // a line on each rail
     }
-    // blocked if this cell or any of its 8 neighbours is held by another walker
+
     function blocked(col, row, mine) {
       for (var dc = -1; dc <= 1; dc++) {
         for (var dr = -1; dr <= 1; dr++) {
@@ -97,7 +117,9 @@
       var k = col + ',' + row;
       var c = document.createElement('div');
       c.className = 'hg-cell';
-      c.style.transform = 'translate(' + (col * SIZE) + 'px,' + (row * SIZE + OFFY) + 'px)';
+      c.style.width = lay.cw + 'px';
+      c.style.height = lay.cw + 'px';
+      c.style.transform = 'translate(' + (lay.x0 + col * lay.cw) + 'px,' + (row * lay.cw) + 'px)';
       grid.appendChild(c);
       void c.offsetWidth; // commit opacity:0 so the transition to 1 fires
       c.style.opacity = '1';
@@ -115,18 +137,18 @@
       }, 600);
     }
     function walk() {
-      var d = dims();
+      var cols = lay.cols, rows = lay.rows;
       var mine = {};
       var col, row, tries = 0;
       do {
-        col = Math.floor(Math.random() * Math.max(1, d.cols - 5));
-        row = Math.min(d.rows - 1, 3 + Math.floor(Math.random() * Math.max(1, d.rows - 4)));
+        col = Math.floor(Math.random() * Math.max(1, cols - 5));
+        row = Math.min(rows - 1, 3 + Math.floor(Math.random() * Math.max(1, rows - 4)));
         tries++;
       } while (blocked(col, row, mine) && tries < 40);
       if (blocked(col, row, mine)) { setTimeout(walk, 1200 + Math.random() * 1800); return; }
       var prev = null, goRight = true, steps = 0;
       (function step() {
-        if (row < 0 || col >= d.cols || steps >= MAX_STEPS || blocked(col, row, mine)) {
+        if (row < 0 || col >= lay.cols || steps >= MAX_STEPS || blocked(col, row, mine)) {
           fade(prev);
           setTimeout(walk, 2200 + Math.random() * 3200);
           return;
@@ -140,9 +162,19 @@
         setTimeout(step, STEP);
       })();
     }
-    var walkers = window.innerWidth < 700 ? 1 : 3;
-    for (var i = 0; i < walkers; i++) {
-      setTimeout(walk, i * 1400 + Math.random() * 900);
+
+    computeLayout();
+    window.addEventListener('load', computeLayout);
+    var lastW = window.innerWidth, rt;
+    window.addEventListener('resize', function () {
+      clearTimeout(rt);
+      rt = setTimeout(function () { if (window.innerWidth !== lastW) { lastW = window.innerWidth; computeLayout(); } }, 220);
+    });
+    if (!reduce) {
+      var walkers = window.innerWidth < 700 ? 1 : 3;
+      for (var i = 0; i < walkers; i++) {
+        setTimeout(walk, i * 1400 + Math.random() * 900);
+      }
     }
   })();
 
