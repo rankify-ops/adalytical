@@ -114,8 +114,8 @@ img,svg{max-width:100%;display:block}
   linear-gradient(rgba(28,58,42,.05) 1px,transparent 1px),
   linear-gradient(90deg,rgba(28,58,42,.05) 1px,transparent 1px);
  background-size:164px 164px;
- -webkit-mask-image:linear-gradient(180deg,#000 90%,transparent 100%);
- mask-image:linear-gradient(180deg,#000 90%,transparent 100%)}
+ -webkit-mask-image:linear-gradient(180deg,#000 95%,transparent 100%);
+ mask-image:linear-gradient(180deg,#000 95%,transparent 100%)}
 /* two framing rails aligned to the content container (logo-left → CTA-right);
    they only span the header band, then hand off to the body cube column line
    at the same x so the frame reads as one continuous 1px line (no doubling) */
