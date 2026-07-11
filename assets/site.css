@@ -41,7 +41,7 @@ img,svg{max-width:100%;display:block}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
 /* ================ NAV ================ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;transition:background .3s ease,box-shadow .3s ease;background:var(--cream);border-bottom:1px solid var(--g200)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;transition:background .3s ease,box-shadow .3s ease;background:var(--cream);border-bottom:1px solid #e9ece2}
 .nav.scrolled{background:var(--cream)}
 /* subtle sparkle where frame lines cross a horizontal divider (firecrawl style) */
 /* the concave 4-point star (the gap four rounded cubes would leave) is FILLED here,
@@ -203,7 +203,7 @@ img,svg{max-width:100%;display:block}
 .hero-float strong{color:var(--forest);display:block;font-size:.86rem}
 
 /* ================ TRUST STRIP (marquee) ================ */
-.trust-strip{background:transparent;height:var(--cell,120px);min-height:96px;position:relative;border-top:1px solid var(--g200);border-bottom:1px solid var(--g200)}
+.trust-strip{background:transparent;height:var(--cell,120px);min-height:96px;position:relative;border-top:1px solid #e9ece2;border-bottom:1px solid #e9ece2}
 /* the hero's content-edge frame lines continue straight through the strip */
 .trust-strip::before,.trust-strip::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:rgba(28,58,42,.05);z-index:3;pointer-events:none}
 .trust-strip::before{left:var(--frame-left,90px)}

@@ -88,8 +88,9 @@
       var cs = getComputedStyle(ctr);
       var cr = ctr.getBoundingClientRect();
       var gutter = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gutter')) || 0;
-      var frameLeft = cr.left + parseFloat(cs.paddingLeft) - gutter;   // rail sits a gutter outside the content
-      var frameRight = cr.right - parseFloat(cs.paddingRight) + gutter;
+      // round to whole pixels so the vertical lines render as a crisp 1px (not a soft 2px)
+      var frameLeft = Math.round(cr.left + parseFloat(cs.paddingLeft) - gutter);
+      var frameRight = Math.round(cr.right - parseFloat(cs.paddingRight) + gutter);
       var W = Math.max(1, frameRight - frameLeft);
       var N = Math.max(1, Math.round(W / 164));
       var cw = W / N;
