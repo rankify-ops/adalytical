@@ -16,7 +16,7 @@
   --forest:#1c3a2a;
   --forest-2:#132a1e;
   --mint:#5cc296;
-  --cream:#f7f6f0;
+  --cream:#f4f5ec;
   --g950:#191b18;--g900:#22251f;--g800:#32362e;--g700:#494e43;--g600:#5e6457;--g500:#787e70;--g400:#999f8f;--g300:#cbcfc3;--g200:#e4e6dc;--g100:#efF0e8;--g50:#f8f8f2;--white:#fff;
   --shadow-s:0 2px 8px rgba(30,55,40,.05),0 1px 3px rgba(30,55,40,.03);
   --shadow:0 4px 20px rgba(30,55,40,.06),0 2px 6px rgba(30,55,40,.03);
@@ -90,7 +90,7 @@ img,svg{max-width:100%;display:block}
 /* ================ SECTIONS ================ */
 .sec{padding:clamp(70px,8vw,120px) 0;position:relative}
 .sec-cream{background:var(--cream)}
-.sec-white{background:linear-gradient(180deg,#fff 0%,#fcfcf7 100%)}
+.sec-white{background:linear-gradient(180deg,#f8f9f1 0%,#f5f6ed 100%)}
 .sec-tag{font-size:.72rem;text-transform:uppercase;letter-spacing:2.4px;color:var(--brand);font-weight:600;margin-bottom:12px;display:inline-block}
 
 /* section header (rankify style) */
@@ -105,7 +105,7 @@ img,svg{max-width:100%;display:block}
 
 /* ================ HERO ================ */
 /* hero + logo strip share one continuous background so the strip matches the hero */
-.hero-wrap{position:relative;overflow:hidden;background:linear-gradient(168deg,#f8f7f0 0%,rgba(38,138,83,.05) 32%,#f6f5ed 55%,#f4f4ec 78%,#f5f5ed 100%)}
+.hero-wrap{position:relative;overflow:hidden;background:linear-gradient(168deg,#f7f8ef 0%,rgba(38,138,83,.05) 32%,#f5f6ed 55%,#f3f4eb 78%,#f4f5ec 100%)}
 .hero-wrap::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:
   radial-gradient(ellipse 60% 34% at 74% 13%,rgba(38,138,83,.08),transparent 66%),
   radial-gradient(ellipse 46% 34% at 12% 72%,rgba(92,194,150,.07),transparent 60%)}
