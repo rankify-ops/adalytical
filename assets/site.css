@@ -44,7 +44,7 @@ img,svg{max-width:100%;display:block}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;transition:background .3s ease,box-shadow .3s ease;background:var(--cream);border-bottom:1px solid var(--g200)}
 .nav.scrolled{background:var(--cream)}
 /* subtle sparkle where frame lines cross a horizontal divider (firecrawl style) */
-.xmark{position:absolute;width:9px;height:9px;transform:translate(-50%,-50%) rotate(45deg);border-radius:2.5px;background:rgba(28,58,42,.14);pointer-events:none;z-index:6}
+.xmark{position:absolute;width:11px;height:11px;transform:translate(-50%,-50%);border-radius:3px;background:rgba(28,58,42,.12);pointer-events:none;z-index:6}
 .xm-nl,.xm-tl,.xm-bl{left:var(--frame-left,90px)}
 .xm-nr,.xm-tr,.xm-br{left:var(--frame-right,calc(100% - 90px))}
 .xm-tl,.xm-tr{top:0}
