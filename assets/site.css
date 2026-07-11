@@ -41,8 +41,8 @@ img,svg{max-width:100%;display:block}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
 /* ================ NAV ================ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;transition:background .3s ease,box-shadow .3s ease;background:transparent;border-bottom:1px solid var(--g200)}
-.nav.scrolled{background:transparent}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;transition:background .3s ease,box-shadow .3s ease;background:var(--cream);border-bottom:1px solid var(--g200)}
+.nav.scrolled{background:var(--cream)}
 .nav-in{max-width:var(--ctr-max);height:100%;margin:0 auto;padding:0 clamp(22px,4vw,64px);display:flex;align-items:center;justify-content:space-between;gap:16px}
 .logo{display:flex;align-items:center;gap:10px}
 .logo .logo-img{height:26px;width:auto;display:block}
@@ -172,12 +172,7 @@ img,svg{max-width:100%;display:block}
 .hero-values li .hv-ico{width:30px;height:30px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--brand-light);color:var(--brand)}
 .hero-values li .hv-ico svg{width:16px;height:16px}
 /* icon draw-in on load */
-.hv-ico [pathLength]{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s var(--ease)}
-.vis .hv-ico [pathLength]{stroke-dashoffset:0}
-.vis .hero-values li:nth-child(1) [pathLength]{transition-delay:.5s}
-.vis .hero-values li:nth-child(2) [pathLength]{transition-delay:.65s}
-.vis .hero-values li:nth-child(3) [pathLength]{transition-delay:.8s}
-.vis .hero-values li:nth-child(4) [pathLength]{transition-delay:.95s}
+/* icons render fully (draw-in animation removed — it was leaving them blank) */
 .hero-float{position:absolute;bottom:-34px;right:-14px;background:#fff;border:1px solid var(--g200);border-radius:16px;padding:14px 18px;box-shadow:var(--shadow-l);display:flex;align-items:center;gap:12px;max-width:250px}
 @media(min-width:941px){.hero-values li:last-child{padding-right:110px}}
 .hero-float .hf-dot{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--mint),var(--brand));display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0}
