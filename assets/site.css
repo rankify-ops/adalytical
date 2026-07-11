@@ -47,7 +47,7 @@ img,svg{max-width:100%;display:block}
 /* the concave 4-point star (the gap four rounded cubes would leave) is FILLED here,
    masked as the intersection of four corner circles; it covers the line crossing */
 .xmark{position:absolute;width:15px;height:15px;transform:translate(-50%,-50%);pointer-events:none;z-index:6;
- background:#fafbf4;
+ background:#e9ece2;
  -webkit-mask:
   radial-gradient(circle at 0 0, #0000 7.5px, #000 7.6px),
   radial-gradient(circle at 100% 0, #0000 7.5px, #000 7.6px),
