@@ -155,9 +155,8 @@ img,svg{max-width:100%;display:block}
 .hero-sub{font-size:clamp(1.02rem,1.15vw,1.18rem);color:var(--g600);line-height:1.7;margin-bottom:34px;max-width:520px}
 .hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
 .hero-stats{display:flex;align-items:stretch}
-.hstat{display:flex;flex-direction:column;gap:2px;padding:0 clamp(18px,2.4vw,34px)}
+.hstat{display:flex;flex-direction:column;gap:2px;padding:0 clamp(26px,3vw,44px)}
 .hstat:first-child{padding-left:0}
-.hstat+.hstat{border-left:1px solid var(--g200)}
 .hs-val{font-size:1.3rem;font-weight:600;letter-spacing:-.02em;color:var(--forest);line-height:1.2}
 .hs-label{font-size:.72rem;font-weight:600;color:var(--g500);text-transform:uppercase;letter-spacing:.06em}
 
