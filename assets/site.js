@@ -70,43 +70,68 @@
 
   // Hero grid: cubes darken in a staircase sequence (right, up, right, up…),
   // each new cube lighting as the previous returns to normal. A few run at
-  // different points and times across the hero.
+  // different points and times; a shared occupancy map keeps any two from
+  // lighting the same cube or one right next to another.
   (function setupCubeSequence() {
     var grid = document.querySelector('.hero-grid');
     if (!grid) return;
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var SIZE = 164, STEP = 360, MAX_STEPS = 8;
+    var SIZE = 164, STEP = 560, MAX_STEPS = 8;
+    var occupied = {};
 
     function dims() {
       var r = grid.getBoundingClientRect();
       return { cols: Math.ceil(r.width / SIZE), rows: Math.ceil(r.height / SIZE) };
     }
-    function litCell(col, row) {
+    // blocked if this cell or any of its 8 neighbours is held by another walker
+    function blocked(col, row, mine) {
+      for (var dc = -1; dc <= 1; dc++) {
+        for (var dr = -1; dr <= 1; dr++) {
+          var k = (col + dc) + ',' + (row + dr);
+          if (occupied[k] && !mine[k]) return true;
+        }
+      }
+      return false;
+    }
+    function litCell(col, row, mine) {
+      var k = col + ',' + row;
       var c = document.createElement('div');
       c.className = 'hg-cell';
       c.style.transform = 'translate(' + (col * SIZE) + 'px,' + (row * SIZE) + 'px)';
       grid.appendChild(c);
       void c.offsetWidth; // commit opacity:0 so the transition to 1 fires
       c.style.opacity = '1';
+      c._key = k; c._mine = mine;
+      occupied[k] = true; mine[k] = true;
       return c;
     }
     function fade(c) {
       if (!c) return;
       c.style.opacity = '0';
-      setTimeout(function () { if (c.parentNode) c.parentNode.removeChild(c); }, 600);
+      // hold the slot until the cube has fully faded, so nothing lights beside a dimming one
+      setTimeout(function () {
+        if (c._key) { delete occupied[c._key]; if (c._mine) delete c._mine[c._key]; }
+        if (c.parentNode) c.parentNode.removeChild(c);
+      }, 600);
     }
     function walk() {
       var d = dims();
-      var col = Math.floor(Math.random() * Math.max(1, d.cols - 5));
-      var row = Math.min(d.rows - 1, 3 + Math.floor(Math.random() * Math.max(1, d.rows - 4)));
+      var mine = {};
+      var col, row, tries = 0;
+      do {
+        col = Math.floor(Math.random() * Math.max(1, d.cols - 5));
+        row = Math.min(d.rows - 1, 3 + Math.floor(Math.random() * Math.max(1, d.rows - 4)));
+        tries++;
+      } while (blocked(col, row, mine) && tries < 40);
+      if (blocked(col, row, mine)) { setTimeout(walk, 1200 + Math.random() * 1800); return; }
       var prev = null, goRight = true, steps = 0;
       (function step() {
-        if (row < 0 || col >= d.cols || steps >= MAX_STEPS) {
+        if (row < 0 || col >= d.cols || steps >= MAX_STEPS || blocked(col, row, mine)) {
           fade(prev);
-          setTimeout(walk, 1600 + Math.random() * 2800);
+          setTimeout(walk, 2200 + Math.random() * 3200);
           return;
         }
-        var cur = litCell(col, row);
+        var cur = litCell(col, row, mine);
         fade(prev);
         prev = cur;
         if (goRight) col++; else row--;
@@ -117,7 +142,7 @@
     }
     var walkers = window.innerWidth < 700 ? 1 : 3;
     for (var i = 0; i < walkers; i++) {
-      setTimeout(walk, i * 1100 + Math.random() * 700);
+      setTimeout(walk, i * 1400 + Math.random() * 900);
     }
   })();
 
