@@ -117,8 +117,8 @@
       // expose to CSS so the logo strip can match the cube height, frame lines & fades
       var root = document.documentElement.style;
       root.setProperty('--cell', cw + 'px');
-      root.setProperty('--frame-left', Math.round(frameLeft) + 'px');
-      root.setProperty('--frame-right', Math.round(frameRight) + 'px');
+      root.setProperty('--frame-left', frameLeft + 'px');
+      root.setProperty('--frame-right', frameRight + 'px');
       // center the little cube clusters in cube cells (the diamond sparkles stay put)
       var spots = [[0.9, 0.16], [0.9, 0.82], [0.08, 0.78]];
       grid.querySelectorAll('.hg-cluster').forEach(function (el, i) {
