@@ -46,19 +46,19 @@ img,svg{max-width:100%;display:block}
 /* subtle sparkle where frame lines cross a horizontal divider (firecrawl style) */
 /* the concave 4-point star (the gap four rounded cubes would leave) is FILLED here,
    masked as the intersection of four corner circles; it covers the line crossing */
-.xmark{position:absolute;width:15px;height:15px;transform:translate(-50%,-50%);pointer-events:none;z-index:6;
+.xmark{position:absolute;width:22px;height:22px;transform:translate(-50%,-50%);pointer-events:none;z-index:6;
  background:#e9ece2;
  -webkit-mask:
-  radial-gradient(circle at 0 0, #0000 7.5px, #000 7.6px),
-  radial-gradient(circle at 100% 0, #0000 7.5px, #000 7.6px),
-  radial-gradient(circle at 0 100%, #0000 7.5px, #000 7.6px),
-  radial-gradient(circle at 100% 100%, #0000 7.5px, #000 7.6px);
+  radial-gradient(circle at 0 0, #0000 11px, #000 11.1px),
+  radial-gradient(circle at 100% 0, #0000 11px, #000 11.1px),
+  radial-gradient(circle at 0 100%, #0000 11px, #000 11.1px),
+  radial-gradient(circle at 100% 100%, #0000 11px, #000 11.1px);
  -webkit-mask-composite:source-in,source-in,source-in;
  mask:
-  radial-gradient(circle at 0 0, #0000 7.5px, #000 7.6px),
-  radial-gradient(circle at 100% 0, #0000 7.5px, #000 7.6px),
-  radial-gradient(circle at 0 100%, #0000 7.5px, #000 7.6px),
-  radial-gradient(circle at 100% 100%, #0000 7.5px, #000 7.6px);
+  radial-gradient(circle at 0 0, #0000 11px, #000 11.1px),
+  radial-gradient(circle at 100% 0, #0000 11px, #000 11.1px),
+  radial-gradient(circle at 0 100%, #0000 11px, #000 11.1px),
+  radial-gradient(circle at 100% 100%, #0000 11px, #000 11.1px);
  mask-composite:intersect}
 .xm-nl,.xm-tl,.xm-bl{left:var(--frame-left,90px)}
 .xm-nr,.xm-tr,.xm-br{left:var(--frame-right,calc(100% - 90px))}
