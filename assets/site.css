@@ -108,11 +108,8 @@ img,svg{max-width:100%;display:block}
 .shead-t .dim{color:var(--g400);display:block}
 
 /* ================ HERO ================ */
-/* hero + logo strip share one continuous background so the strip matches the hero */
-.hero-wrap{position:relative;overflow:hidden;background:linear-gradient(168deg,#f7f8ef 0%,rgba(38,138,83,.05) 32%,#f5f6ed 55%,#f3f4eb 78%,#f4f5ec 100%)}
-.hero-wrap::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;background:
-  radial-gradient(ellipse 60% 34% at 74% 13%,rgba(38,138,83,.08),transparent 66%),
-  radial-gradient(ellipse 46% 34% at 12% 72%,rgba(92,194,150,.07),transparent 60%)}
+/* hero + logo strip share one flat background, matching the nav and the rest of the page */
+.hero-wrap{position:relative;overflow:hidden;background:var(--cream)}
 .hero{padding:158px 0 32px;position:relative;overflow:hidden;background:transparent}
 .hero-grid{position:absolute;top:63px;left:0;right:0;bottom:0;z-index:1;pointer-events:none;
  background-image:
