@@ -103,6 +103,11 @@
       };
       grid.style.backgroundSize = cw + 'px ' + cw + 'px';
       grid.style.backgroundPosition = clInGrid + 'px 0px'; // a line on each rail
+      // expose to CSS so the logo strip can match the cube height, frame lines & fades
+      var root = document.documentElement.style;
+      root.setProperty('--cell', cw + 'px');
+      root.setProperty('--frame-left', Math.round(frameLeft) + 'px');
+      root.setProperty('--frame-right', Math.round(frameRight) + 'px');
     }
 
     function blocked(col, row, mine) {

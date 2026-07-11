@@ -108,7 +108,7 @@ img,svg{max-width:100%;display:block}
 .hero::before{content:'';position:absolute;inset:0;pointer-events:none;background:
   radial-gradient(ellipse 65% 50% at 74% 16%,rgba(38,138,83,.08),transparent 68%),
   radial-gradient(ellipse 50% 45% at 12% 86%,rgba(92,194,150,.06),transparent 60%)}
-.hero-grid{position:absolute;top:64px;left:0;right:0;bottom:0;z-index:1;pointer-events:none;
+.hero-grid{position:absolute;top:63px;left:0;right:0;bottom:0;z-index:1;pointer-events:none;
  background-image:
   radial-gradient(circle,rgba(28,58,42,.14) 1.2px,transparent 1.7px),
   linear-gradient(rgba(28,58,42,.05) 1px,transparent 1px),
@@ -184,10 +184,16 @@ img,svg{max-width:100%;display:block}
 .hero-float strong{color:var(--forest);display:block;font-size:.86rem}
 
 /* ================ TRUST STRIP (marquee) ================ */
-.trust-strip{background:var(--cream);padding:26px 0;overflow:hidden;position:relative;border-top:1px solid var(--g200);border-bottom:1px solid var(--g200)}
-.trust-strip::before,.trust-strip::after{content:'';position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
-.trust-strip::before{left:0;background:linear-gradient(90deg,var(--cream),transparent)}
-.trust-strip::after{right:0;background:linear-gradient(270deg,var(--cream),transparent)}
+.trust-strip{background:var(--cream);height:var(--cell,120px);min-height:96px;overflow:hidden;position:relative;border-top:1px solid var(--g200);border-bottom:1px solid var(--g200)}
+/* the hero's content-edge frame lines continue straight through the strip */
+.trust-strip::before,.trust-strip::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:rgba(28,58,42,.05);z-index:3;pointer-events:none}
+.trust-strip::before{left:var(--frame-left,90px)}
+.trust-strip::after{left:var(--frame-right,calc(100% - 90px))}
+/* static wrapper carries the fade mask so it doesn't scroll with the logos;
+   logos fade out exactly at the two frame lines */
+.strip-inner{position:absolute;inset:0;display:flex;align-items:center;
+ -webkit-mask:linear-gradient(90deg,transparent 0,transparent var(--frame-left,90px),#000 calc(var(--frame-left,90px) + 34px),#000 calc(var(--frame-right,calc(100% - 90px)) - 34px),transparent var(--frame-right,calc(100% - 90px)),transparent 100%);
+ mask:linear-gradient(90deg,transparent 0,transparent var(--frame-left,90px),#000 calc(var(--frame-left,90px) + 34px),#000 calc(var(--frame-right,calc(100% - 90px)) - 34px),transparent var(--frame-right,calc(100% - 90px)),transparent 100%)}
 .marquee-track{display:flex;align-items:center;width:max-content;animation:mq 36s linear infinite;will-change:transform}
 .mq-item{display:flex;align-items:center;white-space:nowrap;margin-right:clamp(38px,5vw,72px)}
 .mq-item img{height:30px;width:auto;opacity:.9;transition:opacity .3s}
