@@ -1,0 +1,87 @@
+/* ============================================================
+   ADALYTICAL — mega menu + case study page
+   (loaded alongside site.css; reuses its design tokens)
+   ============================================================ */
+
+/* ================ MEGA MENU ================ */
+.nav-l>li{position:relative}
+.nav-l>li>a{display:inline-flex;align-items:center;gap:5px}
+.nav-car{width:11px;height:11px;transition:transform .25s ease;opacity:.7}
+.nav-l>li:hover>a .nav-car{transform:rotate(180deg)}
+/* full-width mega panel dropping from the nav */
+.mega{position:fixed;top:63px;left:0;right:0;z-index:99;padding:0 clamp(22px,4vw,64px);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .28s var(--ease);pointer-events:none}
+.nav-l>li.has-mega:hover .mega{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+.mega-card{max-width:var(--ctr-max);margin:8px auto 0;padding:clamp(20px,2.5vw,30px);background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:16px;box-shadow:var(--shadow-l);display:grid;grid-template-columns:repeat(3,1fr) 1.05fr;gap:clamp(18px,2.5vw,40px)}
+.mega-col h4{font-size:.72rem;text-transform:uppercase;letter-spacing:1.6px;color:var(--brand);font-weight:700;margin-bottom:14px}
+.mega-col a{display:flex;align-items:center;gap:10px;padding:9px 10px;margin:0 -10px;border-radius:9px;font-size:.92rem;font-weight:600;color:var(--g800);transition:all .2s}
+.mega-col a:hover{background:var(--brand-light);color:var(--brand-dark)}
+.mega-col a svg{width:16px;height:16px;color:var(--brand);flex-shrink:0}
+.mega-feat{background:linear-gradient(150deg,var(--forest),var(--forest-2));border-radius:12px;padding:22px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.mega-feat::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 80% 15%,rgba(38,138,83,.4),transparent 60%);pointer-events:none}
+.mega-feat .mf-tag{font-size:.68rem;text-transform:uppercase;letter-spacing:1.4px;color:var(--mint);font-weight:700;position:relative}
+.mega-feat h5{color:#fff;font-size:1.05rem;line-height:1.35;margin:8px 0 14px;position:relative}
+.mega-feat .mf-link{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:700;color:#fff;position:relative}
+.mega-feat .mf-link svg{width:15px;height:15px}
+/* simple dropdown */
+.drop{position:absolute;top:calc(100% + 14px);left:-16px;z-index:99;min-width:260px;background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:14px;box-shadow:var(--shadow-l);padding:10px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .24s var(--ease)}
+.nav-l>li.has-drop:hover .drop{opacity:1;visibility:visible;transform:translateY(0)}
+.drop a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:9px;transition:background .2s}
+.drop a:hover{background:var(--brand-light)}
+.drop a strong{font-size:.9rem;font-weight:600;color:var(--forest)}
+.drop a span{font-size:.78rem;color:var(--g500)}
+
+/* ================ CASE STUDY PAGE ================ */
+.csp{padding:118px 0 0;background:var(--cream)}
+.csp-hero{max-width:820px;margin:0 auto;text-align:center;padding:0 clamp(22px,4vw,64px) clamp(30px,4vw,46px)}
+.csp-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--brand);margin-bottom:18px}
+.csp-hero h1{font-size:clamp(2rem,4vw,3.3rem);font-weight:800;letter-spacing:-.03em;line-height:1.1;color:var(--forest);margin-bottom:18px}
+.csp-hero h1 .accent{color:var(--brand)}
+.csp-hero p{font-size:clamp(1rem,1.2vw,1.18rem);color:var(--g600);line-height:1.7;max-width:640px;margin:0 auto}
+/* featured video */
+.csp-vid{max-width:var(--ctr-max);margin:0 auto;padding:0 clamp(22px,4vw,64px)}
+.vid-panel{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:linear-gradient(150deg,#16261c 0%,#0c1712 55%,#0a120d 100%);box-shadow:var(--shadow-l)}
+.vid-panel::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 42%,rgba(38,138,83,.16),transparent 62%);pointer-events:none}
+.vid-panel iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vid-play{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;box-shadow:0 12px 40px rgba(38,138,83,.5);border:none}
+.vid-play:hover{transform:translate(-50%,-50%) scale(1.08);background:var(--brand-2)}
+.vid-play svg{width:30px;height:30px;color:#fff;margin-left:4px}
+.vid-tag{position:absolute;top:calc(44% + 58px);left:50%;transform:translateX(-50%);font-size:.7rem;letter-spacing:.18em;color:rgba(255,255,255,.42);font-family:ui-monospace,Menlo,monospace}
+.vid-stats{position:absolute;left:0;right:0;bottom:0;padding:clamp(20px,3vw,34px);display:flex;gap:clamp(24px,5vw,64px);flex-wrap:wrap;background:linear-gradient(0deg,rgba(6,15,10,.85),transparent)}
+.vid-stat strong{display:block;font-size:clamp(1.5rem,2.6vw,2.2rem);font-weight:800;letter-spacing:-.03em;line-height:1;color:#fff}
+.vid-stat.up strong{color:var(--mint)}
+.vid-stat span{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:600;margin-top:8px;display:block}
+.vid-foot{max-width:var(--ctr-max);margin:12px auto 0;padding:0 clamp(22px,4vw,64px);text-align:center;font-size:.7rem;letter-spacing:.16em;color:var(--g400);font-family:ui-monospace,Menlo,monospace}
+/* body: sticky testimonial + prose */
+.csp-body{max-width:var(--ctr-max);margin:0 auto;padding:clamp(46px,6vw,80px) clamp(22px,4vw,64px);display:grid;grid-template-columns:300px 1fr;gap:clamp(36px,5vw,72px);align-items:start}
+.csp-phone{position:sticky;top:96px}
+.phone-frame{position:relative;aspect-ratio:9/19;border-radius:30px;overflow:hidden;background:linear-gradient(160deg,#16261c,#0a120d);box-shadow:var(--shadow-l);border:1px solid rgba(30,55,40,.1)}
+.phone-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:70px;height:5px;border-radius:3px;background:rgba(255,255,255,.25);z-index:2}
+.phone-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s;border:none}
+.phone-play:hover{transform:translate(-50%,-50%) scale(1.08)}
+.phone-play svg{width:22px;height:22px;color:var(--forest);margin-left:3px}
+.phone-tag{position:absolute;bottom:20px;left:0;right:0;text-align:center;font-size:.62rem;letter-spacing:.14em;color:rgba(255,255,255,.4);font-family:ui-monospace,Menlo,monospace}
+.csp-author{text-align:center;margin-top:18px}
+.csp-author strong{display:block;color:var(--forest);font-size:.95rem}
+.csp-author span{font-size:.8rem;color:var(--g500)}
+.csp-prose{max-width:640px}
+.csp-prose .lbl{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:1.8px;color:var(--brand);font-weight:700;margin:36px 0 12px}
+.csp-prose .lbl.first{margin-top:0}
+.csp-prose h3{font-size:clamp(1.3rem,1.8vw,1.65rem);color:var(--forest);letter-spacing:-.02em;margin-bottom:14px;line-height:1.25}
+.csp-prose p{font-size:1.02rem;color:var(--g700);line-height:1.75;margin-bottom:16px}
+.csp-prose blockquote{border-left:3px solid var(--brand);padding:4px 0 4px 22px;margin:26px 0;font-size:1.2rem;line-height:1.5;color:var(--forest);font-weight:600}
+.csp-results{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.csp-result{background:#fff;border:1px solid rgba(30,55,40,.06);border-radius:14px;padding:20px 22px;box-shadow:var(--shadow-s)}
+.csp-result strong{display:block;font-size:1.7rem;font-weight:800;letter-spacing:-.03em;color:var(--brand-dark);line-height:1}
+.csp-result span{font-size:.8rem;color:var(--g600);font-weight:600;margin-top:6px;display:block}
+/* more case studies strip */
+.csp-more{background:linear-gradient(180deg,#fff,#fbfcf7);padding:clamp(56px,7vw,90px) 0;border-top:1px solid #e9ece2}
+
+@media(max-width:940px){
+  .mega,.drop{display:none}
+}
+@media(max-width:820px){
+  .csp-body{grid-template-columns:1fr;gap:32px}
+  .csp-phone{position:static;max-width:280px;margin:0 auto}
+  .csp-results{grid-template-columns:1fr}
+}

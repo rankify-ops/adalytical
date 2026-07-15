@@ -327,6 +327,22 @@
     });
   }, 1200);
 
+  // Case study videos: click a play button to swap in the YouTube embed.
+  // Set data-yt="VIDEO_ID" on the .vid-panel / .phone-frame to enable.
+  document.querySelectorAll('.vid-play, .phone-play').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var panel = btn.closest('[data-yt]');
+      var id = panel && panel.getAttribute('data-yt');
+      if (!id) return; // no video wired up yet
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      iframe.allow = 'accelerated-plc; autoplay; encrypted-media; picture-in-picture';
+      iframe.allowFullscreen = true;
+      panel.querySelectorAll('.vid-play,.phone-play,.vid-tag,.vid-stats,.phone-tag,.phone-notch').forEach(function (el) { el.remove(); });
+      panel.appendChild(iframe);
+    });
+  });
+
   // Current year in footer
   var yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
