@@ -4,14 +4,16 @@
    ============================================================ */
 
 /* ================ MEGA MENU ================ */
-.nav-l>li{position:relative}
-.nav-l>li>a{display:inline-flex;align-items:center;gap:5px}
+/* full-height nav items so there's no dead zone between the link and the menu */
+.nav-l{height:100%;align-items:stretch}
+.nav-l>li{position:relative;display:flex;align-items:center}
+.nav-l>li>a{display:inline-flex;align-items:center;gap:5px;height:100%}
 .nav-car{width:11px;height:11px;transition:transform .25s ease;opacity:.7}
-.nav-l>li:hover>a .nav-car{transform:rotate(180deg)}
+.nav-l>li:hover>a .nav-car,.nav-l>li.open>a .nav-car{transform:rotate(180deg)}
 /* full-width mega panel dropping from the nav */
-.mega{position:fixed;top:63px;left:0;right:0;z-index:99;padding:0 clamp(22px,4vw,64px);opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .28s var(--ease);pointer-events:none}
-.nav-l>li.has-mega:hover .mega{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
-.mega-card{max-width:var(--ctr-max);margin:8px auto 0;padding:clamp(20px,2.5vw,30px);background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:16px;box-shadow:var(--shadow-l);display:grid;grid-template-columns:repeat(3,1fr) 1.05fr;gap:clamp(18px,2.5vw,40px)}
+.mega{position:fixed;top:63px;left:0;right:0;z-index:99;padding:8px clamp(22px,4vw,64px) 0;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .28s var(--ease);pointer-events:none}
+.nav-l>li.has-mega:hover .mega,.nav-l>li.has-mega.open .mega{opacity:1;visibility:visible;transform:translateY(0);pointer-events:auto}
+.mega-card{max-width:var(--ctr-max);margin:0 auto;padding:clamp(20px,2.5vw,30px);background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:16px;box-shadow:var(--shadow-l);display:grid;grid-template-columns:repeat(3,1fr) 1.05fr;gap:clamp(18px,2.5vw,40px)}
 .mega-col h4{font-size:.72rem;text-transform:uppercase;letter-spacing:1.6px;color:var(--brand);font-weight:700;margin-bottom:14px}
 .mega-col a{display:flex;align-items:center;gap:10px;padding:9px 10px;margin:0 -10px;border-radius:9px;font-size:.92rem;font-weight:600;color:var(--g800);transition:all .2s}
 .mega-col a:hover{background:var(--brand-light);color:var(--brand-dark)}
@@ -23,8 +25,10 @@
 .mega-feat .mf-link{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;font-weight:700;color:#fff;position:relative}
 .mega-feat .mf-link svg{width:15px;height:15px}
 /* simple dropdown */
-.drop{position:absolute;top:calc(100% + 14px);left:-16px;z-index:99;min-width:260px;background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:14px;box-shadow:var(--shadow-l);padding:10px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .24s var(--ease)}
-.nav-l>li.has-drop:hover .drop{opacity:1;visibility:visible;transform:translateY(0)}
+.drop{position:absolute;top:calc(100% + 12px);left:-16px;z-index:99;min-width:260px;background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:14px;box-shadow:var(--shadow-l);padding:10px;opacity:0;visibility:hidden;transform:translateY(-8px);transition:all .24s var(--ease)}
+/* invisible bridge so the cursor doesn't drop hover crossing the gap */
+.drop::before{content:'';position:absolute;top:-14px;left:0;right:0;height:14px}
+.nav-l>li.has-drop:hover .drop,.nav-l>li.has-drop.open .drop{opacity:1;visibility:visible;transform:translateY(0)}
 .drop a{display:flex;flex-direction:column;gap:2px;padding:10px 12px;border-radius:9px;transition:background .2s}
 .drop a:hover{background:var(--brand-light)}
 .drop a strong{font-size:.9rem;font-weight:600;color:var(--forest)}

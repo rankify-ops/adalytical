@@ -327,6 +327,29 @@
     });
   }, 1200);
 
+  // Mega menu / dropdown: JS-driven open with a close delay so crossing the
+  // gap between the nav item and the panel never drops the menu.
+  (function setupMenus() {
+    var items = document.querySelectorAll('.nav-l > li.has-mega, .nav-l > li.has-drop');
+    items.forEach(function (li) {
+      var t;
+      li.addEventListener('mouseenter', function () {
+        clearTimeout(t);
+        items.forEach(function (o) { if (o !== li) o.classList.remove('open'); });
+        li.classList.add('open');
+      });
+      li.addEventListener('mouseleave', function () {
+        clearTimeout(t);
+        t = setTimeout(function () { li.classList.remove('open'); }, 260);
+      });
+      // a click on the top link toggles (touch / keyboard friendly)
+      var top = li.querySelector('a');
+      if (top) top.addEventListener('click', function (e) {
+        if (top.getAttribute('href') === '#') e.preventDefault();
+      });
+    });
+  })();
+
   // Case study videos: click a play button to swap in the YouTube embed.
   // Set data-yt="VIDEO_ID" on the .vid-panel / .phone-frame to enable.
   document.querySelectorAll('.vid-play, .phone-play').forEach(function (btn) {
