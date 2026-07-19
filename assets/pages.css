@@ -79,7 +79,7 @@
 .csp-result strong{display:block;font-size:1.7rem;font-weight:800;letter-spacing:-.03em;color:var(--brand-dark);line-height:1}
 .csp-result span{font-size:.8rem;color:var(--g600);font-weight:600;margin-top:6px;display:block}
 /* more case studies strip */
-.csp-more{background:linear-gradient(180deg,#fff,#fbfcf7);padding:clamp(56px,7vw,90px) 0;border-top:1px solid #e9ece2}
+.csp-more{background:linear-gradient(180deg,#fff,#f7f7f7);padding:clamp(56px,7vw,90px) 0;border-top:1px solid #e9e9e9}
 
 @media(max-width:940px){
   .mega,.drop{display:none}

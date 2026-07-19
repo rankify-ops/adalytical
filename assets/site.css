@@ -16,7 +16,7 @@
   --forest:#1c3a2a;
   --forest-2:#132a1e;
   --mint:#5cc296;
-  --cream:#f4f5ec;
+  --cream:#f4f4f4;
   --g950:#191b18;--g900:#22251f;--g800:#32362e;--g700:#494e43;--g600:#5e6457;--g500:#787e70;--g400:#999f8f;--g300:#cbcfc3;--g200:#e4e6dc;--g100:#efF0e8;--g50:#f8f8f2;--white:#fff;
   --shadow-s:0 2px 8px rgba(30,55,40,.05),0 1px 3px rgba(30,55,40,.03);
   --shadow:0 4px 20px rgba(30,55,40,.06),0 2px 6px rgba(30,55,40,.03);
@@ -41,13 +41,13 @@ img,svg{max-width:100%;display:block}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
 /* ================ NAV ================ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;transition:background .3s ease,box-shadow .3s ease;background:var(--cream);border-bottom:1px solid #e9ece2}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;overflow:hidden;transition:background .3s ease,box-shadow .3s ease;background:var(--cream);border-bottom:1px solid #e9e9e9}
 .nav.scrolled{background:var(--cream)}
 /* subtle sparkle where frame lines cross a horizontal divider (firecrawl style) */
 /* the concave 4-point star (the gap four rounded cubes would leave) is FILLED here,
    masked as the intersection of four corner circles; it covers the line crossing */
 .xmark{position:absolute;width:22px;height:22px;transform:translate(-50%,-50%);pointer-events:none;z-index:6;
- background:#e9ece2;
+ background:#e9e9e9;
  -webkit-mask:
   radial-gradient(circle at 0 0, #0000 11px, #000 11.1px),
   radial-gradient(circle at 100% 0, #0000 11px, #000 11.1px),
@@ -60,10 +60,13 @@ img,svg{max-width:100%;display:block}
   radial-gradient(circle at 0 100%, #0000 11px, #000 11.1px),
   radial-gradient(circle at 100% 100%, #0000 11px, #000 11.1px);
  mask-composite:intersect}
-.xm-nl,.xm-tl,.xm-bl{left:var(--frame-left,90px)}
-.xm-nr,.xm-tr,.xm-br{left:var(--frame-right,calc(100% - 90px))}
+.xm-nl,.xm-tl,.xm-bl,.xm-hl{left:var(--frame-left,90px)}
+.xm-nr,.xm-tr,.xm-br,.xm-hr{left:var(--frame-right,calc(100% - 90px))}
 .xm-tl,.xm-tr{top:0}
 .xm-nl,.xm-nr,.xm-bl,.xm-br{top:100%}
+/* header/hero divider: the top half lives on the fixed nav (clipped by its overflow),
+   the bottom half lives on the hero so it scrolls away with the page */
+.xm-hl,.xm-hr{top:64px}
 /* frame lines on the nav so they line up with the hero/section lines below */
 .nav::before,.nav::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:rgba(28,58,42,.05);pointer-events:none}
 .nav::before{left:var(--frame-left,90px)}
@@ -115,7 +118,7 @@ img,svg{max-width:100%;display:block}
 /* ================ SECTIONS ================ */
 .sec{padding:clamp(70px,8vw,120px) 0;position:relative}
 .sec-cream{background:var(--cream)}
-.sec-white{background:linear-gradient(180deg,#f8f9f1 0%,#f5f6ed 100%)}
+.sec-white{background:linear-gradient(180deg,#f9f9f9 0%,#f5f5f5 100%)}
 .sec-tag{font-size:.72rem;text-transform:uppercase;letter-spacing:2.4px;color:var(--brand);font-weight:600;margin-bottom:12px;display:inline-block}
 
 /* section header (rankify style) */
@@ -130,7 +133,7 @@ img,svg{max-width:100%;display:block}
 
 /* ================ HERO ================ */
 /* hero + logo strip share one flat background, matching the nav and the rest of the page */
-.hero-wrap{position:relative;overflow:hidden;background:var(--cream)}
+.hero-wrap{position:relative;background:var(--cream)}
 .hero{padding:158px 0 32px;position:relative;overflow:hidden;background:transparent}
 .hero-grid{position:absolute;top:63px;left:0;right:0;bottom:0;z-index:1;pointer-events:none;
  background-image:
@@ -203,7 +206,7 @@ img,svg{max-width:100%;display:block}
 .hero-float strong{color:var(--forest);display:block;font-size:.86rem}
 
 /* ================ TRUST STRIP (marquee) ================ */
-.trust-strip{background:transparent;height:var(--cell,120px);min-height:96px;position:relative;border-top:1px solid #e9ece2;border-bottom:1px solid #e9ece2}
+.trust-strip{background:transparent;height:var(--cell,120px);min-height:96px;position:relative;border-top:1px solid #e9e9e9;border-bottom:1px solid #e9e9e9}
 /* the hero's content-edge frame lines continue straight through the strip */
 .trust-strip::before,.trust-strip::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:rgba(28,58,42,.05);z-index:3;pointer-events:none}
 .trust-strip::before{left:var(--frame-left,90px)}
