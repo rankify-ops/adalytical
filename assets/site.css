@@ -466,6 +466,7 @@ img,svg{max-width:100%;display:block}
 
 /* ================ RESPONSIVE ================ */
 @media(max-width:940px){
+  .hg-cluster,.hg-spark,.hg-tag{display:none} /* hide hero decor on mobile */
   .nav-l{display:none}
   .nav-r .nav-cta{display:none}
   .mob-tog{display:flex}
