@@ -89,3 +89,47 @@
   .csp-phone{position:static;max-width:280px;margin:0 auto}
   .csp-results{grid-template-columns:1fr}
 }
+
+/* ============================================================
+   HOME PAGE — added conversion sections (feedbird-inspired)
+   ============================================================ */
+
+/* ---- MID-PAGE CTA STRIP (dark band) ---- */
+.midcta-wrap{padding:clamp(24px,4vw,48px) clamp(8px,1.2vw,20px)}
+.midcta{max-width:var(--ctr-max);margin:0 auto;background:linear-gradient(150deg,#17352a 0%,var(--forest-2) 60%,#0d1f15 100%);border-radius:26px;padding:clamp(32px,4vw,54px) clamp(28px,4vw,62px);display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap;position:relative;overflow:hidden;box-shadow:var(--shadow-l)}
+.midcta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 52% 72% at 86% 18%,rgba(38,138,83,.32),transparent 60%);pointer-events:none}
+.midcta-txt{position:relative;max-width:660px}
+.midcta-txt .sec-tag{color:var(--mint)}
+.midcta-txt h2{color:#fff;font-size:clamp(1.5rem,2.7vw,2.3rem);letter-spacing:-.03em;line-height:1.14;margin-bottom:10px}
+.midcta-txt p{color:rgba(255,255,255,.72);font-size:1.02rem;line-height:1.6;margin:0}
+.midcta .btn-p{position:relative;flex-shrink:0}
+
+/* ---- COST COMPARISON ---- */
+.cmp-grid{display:grid;grid-template-columns:repeat(4,1fr) 1.28fr;gap:14px;margin-top:clamp(34px,4vw,54px);align-items:stretch}
+.cmp-card{background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:16px;padding:24px 22px;display:flex;flex-direction:column;box-shadow:var(--shadow-s)}
+.cmp-lbl{font-size:.7rem;text-transform:uppercase;letter-spacing:1.6px;font-weight:700;color:var(--g500)}
+.cmp-cost{font-size:clamp(1.45rem,2.3vw,2rem);font-weight:800;letter-spacing:-.03em;color:var(--forest);margin:12px 0 3px;line-height:1}
+.cmp-cost span{font-size:.9rem;font-weight:600;color:var(--g400);letter-spacing:0}
+.cmp-sub{font-size:.78rem;color:var(--g500);font-weight:600}
+.cmp-con{margin-top:auto;padding-top:18px;font-size:.86rem;color:var(--g600);line-height:1.5;display:flex;gap:8px;align-items:flex-start}
+.cmp-con svg{width:15px;height:15px;color:var(--g400);flex-shrink:0;margin-top:2px}
+.cmp-best{background:linear-gradient(155deg,#17352a 0%,var(--forest-2) 60%,#0d1f15 100%);border:none;color:#fff;position:relative;overflow:hidden;box-shadow:var(--shadow-l)}
+.cmp-best::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 72% 55% at 80% 12%,rgba(38,138,83,.36),transparent 62%);pointer-events:none}
+.cmp-flag{font-size:.62rem;letter-spacing:1.8px;text-transform:uppercase;font-weight:700;color:var(--mint);position:relative}
+.cmp-best .cmp-lbl{color:#fff;font-size:1.18rem;letter-spacing:-.02em;text-transform:none;margin-top:6px;position:relative}
+.cmp-best .cmp-cost{color:#fff;position:relative}
+.cmp-best .cmp-sub{color:rgba(255,255,255,.62);position:relative}
+.cmp-pros{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:9px;position:relative}
+.cmp-pros li{display:flex;gap:9px;align-items:flex-start;font-size:.88rem;color:rgba(255,255,255,.92);line-height:1.4}
+.cmp-pros svg{width:16px;height:16px;color:var(--mint);flex-shrink:0;margin-top:2px;stroke-width:2.6}
+@media(max-width:920px){.cmp-grid{grid-template-columns:1fr 1fr}.cmp-best{grid-column:1/-1}}
+@media(max-width:520px){.cmp-grid{grid-template-columns:1fr}}
+
+/* ---- GUARANTEE / RISK REVERSAL ---- */
+.grt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);margin-top:clamp(30px,4vw,48px)}
+.grt-card{background:#fff;border:1px solid rgba(30,55,40,.07);border-radius:18px;padding:clamp(24px,3vw,34px);box-shadow:var(--shadow-s)}
+.grt-ic{width:48px;height:48px;border-radius:14px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.grt-ic svg{width:24px;height:24px;color:var(--brand);stroke-width:1.8}
+.grt-card h3{font-size:1.16rem;color:var(--forest);margin-bottom:9px;letter-spacing:-.02em}
+.grt-card p{font-size:.95rem;color:var(--g600);line-height:1.62;margin:0}
+@media(max-width:760px){.grt-grid{grid-template-columns:1fr}}
