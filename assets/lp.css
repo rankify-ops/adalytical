@@ -1,0 +1,90 @@
+/* ============================================================
+   ADALYTICAL — conversion landing page (lp.html)
+   Layers high-converting components onto the home design system.
+   Loaded after site.css + pages.css. Reuses all their tokens.
+   ============================================================ */
+
+/* ---- HERO PROOF BAR (star rating + review count + urgency) ---- */
+.hero-proof{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.hp-rating{display:inline-flex;align-items:center;gap:9px}
+.hp-stars{display:inline-flex;gap:2px}
+.hp-stars svg{width:17px;height:17px;fill:#f5b301;flex-shrink:0}
+.hp-rating strong{font-size:.92rem;color:var(--forest);font-weight:700}
+.hp-rating span{font-size:.86rem;color:var(--g600);font-weight:500}
+.hp-urgency{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;font-weight:700;color:var(--brand-dark);background:var(--brand-light);border:1px solid rgba(38,138,83,.2);padding:6px 13px;border-radius:50px;letter-spacing:.01em}
+.hp-urgency .hp-dot{width:7px;height:7px;border-radius:50%;background:var(--brand);flex-shrink:0;box-shadow:0 0 0 0 rgba(38,138,83,.5);animation:hpPulse 2s infinite}
+@keyframes hpPulse{0%{box-shadow:0 0 0 0 rgba(38,138,83,.45)}70%{box-shadow:0 0 0 7px rgba(38,138,83,0)}100%{box-shadow:0 0 0 0 rgba(38,138,83,0)}}
+@media(prefers-reduced-motion:reduce){.hp-dot{animation:none}}
+
+/* ---- CTA RISK-REVERSAL MICROCOPY ---- */
+.cta-micro{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:.82rem;color:var(--g600);font-weight:500}
+.cta-micro .cm-i{display:inline-flex;align-items:center;gap:5px}
+.cta-micro svg{width:14px;height:14px;color:var(--brand);flex-shrink:0}
+.cta-micro .cm-sep{width:3px;height:3px;border-radius:50%;background:var(--g300)}
+
+/* ---- TRUST / CREDENTIAL BADGE ROW ---- */
+.strip-label{text-align:center;font-size:.74rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--g500);font-weight:700;margin-bottom:22px}
+.badge-row{display:flex;justify-content:center;align-items:stretch;gap:14px;flex-wrap:wrap;max-width:var(--ctr-max);margin:0 auto;padding:clamp(28px,4vw,44px) clamp(22px,4vw,64px) 0}
+.badge{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:14px;padding:13px 20px;box-shadow:var(--shadow-s)}
+.badge svg{width:22px;height:22px;color:var(--brand);flex-shrink:0;stroke-width:1.8}
+.badge strong{display:block;font-size:.95rem;color:var(--forest);letter-spacing:-.01em;line-height:1.1}
+.badge span{font-size:.74rem;color:var(--g500);font-weight:500}
+
+/* ---- SPRINKLED PULL-QUOTE (between sections) ---- */
+.pullq-wrap{padding:clamp(30px,5vw,60px) clamp(8px,1.2vw,20px)}
+.pullq{max-width:960px;margin:0 auto;text-align:center;padding:0 clamp(22px,4vw,40px)}
+.pullq-stars{display:inline-flex;gap:3px;margin-bottom:18px}
+.pullq-stars svg{width:19px;height:19px;fill:#f5b301}
+.pullq blockquote{font-size:clamp(1.35rem,2.6vw,2rem);line-height:1.4;font-weight:600;letter-spacing:-.02em;color:var(--forest);margin-bottom:20px}
+.pullq blockquote strong{color:var(--brand)}
+.pullq-by{display:inline-flex;align-items:center;gap:11px;justify-content:center}
+.pullq-av{width:40px;height:40px;border-radius:50%;background:linear-gradient(140deg,var(--brand),var(--forest));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem}
+.pullq-by strong{display:block;color:var(--forest);font-size:.95rem}
+.pullq-by span{font-size:.82rem;color:var(--g500)}
+
+/* ---- TESTIMONIAL VERIFICATION + AGGREGATE HEADER ---- */
+.tst-agg{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:clamp(30px,4vw,44px)}
+.tst-agg .ta-stars{display:inline-flex;gap:3px}
+.tst-agg .ta-stars svg{width:22px;height:22px;fill:#f5b301}
+.tst-agg .ta-score{font-size:1.15rem;font-weight:800;color:var(--forest);letter-spacing:-.02em}
+.tst-agg .ta-txt{font-size:.92rem;color:var(--g600);font-weight:500}
+.tst-agg .ta-src{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;color:var(--g500);border-left:1px solid var(--g300);padding-left:14px}
+.tst-agg .ta-src svg{width:15px;height:15px;color:var(--brand)}
+.tst-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:14px;padding-top:13px;border-top:1px solid rgba(30,55,40,.07)}
+.tst-verified{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:700;color:var(--brand)}
+.tst-verified svg{width:14px;height:14px}
+.tst-date{font-size:.72rem;color:var(--g400);font-weight:500}
+
+/* ---- VIDEO TESTIMONIAL ROW ---- */
+.vtst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);margin-top:clamp(30px,4vw,48px)}
+.vtst{position:relative;aspect-ratio:9/13;border-radius:20px;overflow:hidden;background:linear-gradient(160deg,#16261c,#0a120d);box-shadow:var(--shadow-l);border:1px solid rgba(30,55,40,.1);cursor:pointer}
+.vtst::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 38%,rgba(38,138,83,.22),transparent 62%);pointer-events:none}
+.vtst iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vtst-play{position:absolute;top:42%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.94);display:flex;align-items:center;justify-content:center;transition:transform .3s;z-index:2}
+.vtst:hover .vtst-play{transform:translate(-50%,-50%) scale(1.09)}
+.vtst-play svg{width:24px;height:24px;color:var(--forest);margin-left:3px}
+.vtst-cap{position:absolute;left:0;right:0;bottom:0;padding:18px 18px 16px;background:linear-gradient(0deg,rgba(6,15,10,.9),transparent);z-index:2}
+.vtst-cap .vt-stars{display:inline-flex;gap:2px;margin-bottom:7px}
+.vtst-cap .vt-stars svg{width:13px;height:13px;fill:#f5b301}
+.vtst-cap strong{display:block;color:#fff;font-size:.92rem;letter-spacing:-.01em}
+.vtst-cap span{font-size:.76rem;color:rgba(255,255,255,.6)}
+.vtst-cap .vt-badge{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:700;color:var(--mint);margin-top:6px}
+.vtst-cap .vt-badge svg{width:12px;height:12px}
+@media(max-width:820px){.vtst-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.vtst-grid{grid-template-columns:1fr;max-width:340px;margin-left:auto;margin-right:auto}}
+
+/* ---- TEAM / FOUNDER SECTION ---- */
+.team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,22px);margin-top:clamp(32px,4vw,50px)}
+.team-card{background:#fff;border:1px solid rgba(30,55,40,.07);border-radius:18px;padding:22px;text-align:center;box-shadow:var(--shadow-s)}
+.team-photo{width:88px;height:88px;border-radius:50%;margin:0 auto 16px;background:linear-gradient(150deg,var(--brand-light),#dfeee6);display:flex;align-items:center;justify-content:center;font-size:1.9rem;font-weight:700;color:var(--brand-dark);overflow:hidden;position:relative}
+.team-photo img{width:100%;height:100%;object-fit:cover}
+.team-card h4{font-size:1.05rem;color:var(--forest);margin-bottom:3px;letter-spacing:-.01em}
+.team-role{font-size:.8rem;color:var(--brand);font-weight:600;margin-bottom:10px}
+.team-card p{font-size:.85rem;color:var(--g600);line-height:1.55}
+.team-badge{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:700;color:var(--brand-dark);background:var(--brand-light);padding:5px 11px;border-radius:50px;margin-top:12px}
+.team-badge svg{width:13px;height:13px;color:var(--brand)}
+@media(max-width:900px){.team-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.team-grid{grid-template-columns:1fr;max-width:320px;margin-left:auto;margin-right:auto}}
+
+/* ---- EDITABLE-CONTENT FLAG (dev only; remove before final) ---- */
+.needs-data{position:relative}
