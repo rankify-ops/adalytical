@@ -23,7 +23,12 @@
 .cta-micro .cm-sep{width:3px;height:3px;border-radius:50%;background:var(--g300)}
 
 /* ---- TRUST / CREDENTIAL BADGE ROW ---- */
-.strip-label{text-align:center;font-size:.74rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--g500);font-weight:700;margin-bottom:22px}
+/* padded band that carries the trusted-by label; frame rails run straight through */
+.strip-cap-band{position:relative;padding:clamp(28px,4vw,48px) 0 clamp(24px,3vw,38px);background:var(--cream)}
+.strip-cap-band::before,.strip-cap-band::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:rgba(0,0,0,.05);pointer-events:none;z-index:0}
+.strip-cap-band::before{left:var(--frame-left,90px)}
+.strip-cap-band::after{left:var(--frame-right,calc(100% - 90px))}
+.strip-label{position:relative;z-index:1;text-align:center;font-size:.74rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--g500);font-weight:700;margin:0}
 .sec-badges{padding:clamp(30px,4vw,50px) 0}
 .badge-row{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px)}
 .badge{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:14px;padding:16px 20px;box-shadow:var(--shadow-s)}
