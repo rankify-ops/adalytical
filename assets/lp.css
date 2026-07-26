@@ -40,8 +40,8 @@
 /* logo strip: divider line on top (sits right under the trimmed hero / cards),
    then symmetric spacing — label centred in the top gap, logos centred between the rails */
 .lp-strip{height:auto;min-height:0;padding-bottom:clamp(80px,8.8vw,112px)}
-.lp-strip .strip-label{padding-top:clamp(36px,3.8vw,48px)}
-.lp-strip .strip-inner{position:relative;inset:auto;height:clamp(46px,5.6vw,58px);margin-top:clamp(36px,3.8vw,48px)}
+.lp-strip .strip-label{padding-top:clamp(44px,4.6vw,58px)}
+.lp-strip .strip-inner{position:relative;inset:auto;height:clamp(46px,5.6vw,58px);margin-top:clamp(28px,3vw,38px)}
 .sec-badges{padding:clamp(30px,4vw,50px) 0}
 .badge-row{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px)}
 .badge{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:14px;padding:16px 20px;box-shadow:var(--shadow-s)}
