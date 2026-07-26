@@ -18,6 +18,16 @@
 
 /* ---- FULL-WIDTH HERO TRUST ROW (5 cards spanning the section) ---- */
 .hero-stats-full{margin-top:clamp(26px,3.2vw,44px)}
+/* divider line sits right below the trust cards; rails cross it via the sparkles */
+.hero-baseline{position:relative;z-index:2;border-top:1px solid rgba(0,0,0,.05);margin-top:clamp(28px,3.4vw,46px)}
+.hero-baseline .xmark{top:0}
+.hero-baseline .hb-l{left:var(--frame-left,90px)}
+.hero-baseline .hb-r{left:var(--frame-right,calc(100% - 90px))}
+/* the logo strip no longer carries the divider line (it moved up under the cards) */
+.trust-strip{border-top:none}
+.trust-strip .xm-tl,.trust-strip .xm-tr{display:none}
+/* keep the trusted-by label sitting close above the logos */
+.strip-cap-band{padding-top:clamp(30px,4vw,52px);padding-bottom:clamp(16px,2vw,24px)}
 .hero-stats-full .hstat{padding:14px 16px;gap:4px}
 .hero-stats-full .hs-val{font-size:clamp(1rem,1.3vw,1.2rem)}
 @media(max-width:760px){
