@@ -18,16 +18,6 @@
 
 /* ---- FULL-WIDTH HERO TRUST ROW (5 cards spanning the section) ---- */
 .hero-stats-full{margin-top:clamp(26px,3.2vw,44px)}
-/* divider line sits right below the trust cards; rails cross it via the sparkles */
-.hero-baseline{position:relative;z-index:2;border-top:1px solid rgba(0,0,0,.05);margin-top:clamp(28px,3.4vw,46px)}
-.hero-baseline .xmark{top:0}
-.hero-baseline .hb-l{left:var(--frame-left,90px)}
-.hero-baseline .hb-r{left:var(--frame-right,calc(100% - 90px))}
-/* the logo strip no longer carries the divider line (it moved up under the cards) */
-.trust-strip{border-top:none}
-.trust-strip .xm-tl,.trust-strip .xm-tr{display:none}
-/* keep the trusted-by label sitting close above the logos */
-.strip-cap-band{padding-top:clamp(30px,4vw,52px);padding-bottom:clamp(16px,2vw,24px)}
 .hero-stats-full .hstat{padding:14px 16px;gap:4px}
 .hero-stats-full .hs-val{font-size:clamp(1rem,1.3vw,1.2rem)}
 @media(max-width:760px){
@@ -46,11 +36,12 @@
 
 /* ---- TRUST / CREDENTIAL BADGE ROW ---- */
 /* padded band that carries the trusted-by label; frame rails run straight through */
-.strip-cap-band{position:relative;padding:clamp(28px,4vw,48px) 0 clamp(24px,3vw,38px);background:var(--cream)}
-.strip-cap-band::before,.strip-cap-band::after{content:'';position:absolute;top:0;bottom:0;width:1px;background:rgba(0,0,0,.05);pointer-events:none;z-index:0}
-.strip-cap-band::before{left:var(--frame-left,90px)}
-.strip-cap-band::after{left:var(--frame-right,calc(100% - 90px))}
-.strip-label{position:relative;z-index:1;text-align:center;font-size:.74rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--g500);font-weight:700;margin:0}
+.strip-label{position:relative;z-index:2;text-align:center;font-size:.74rem;letter-spacing:1.8px;text-transform:uppercase;color:var(--g500);font-weight:700;margin:0}
+/* logo strip: divider line on top (sits right under the trimmed hero / cards),
+   then symmetric spacing — label centred in the top gap, logos centred between the rails */
+.lp-strip{height:auto;min-height:0;padding-bottom:clamp(80px,8.8vw,112px)}
+.lp-strip .strip-label{padding-top:clamp(36px,3.8vw,48px)}
+.lp-strip .strip-inner{position:relative;inset:auto;height:clamp(46px,5.6vw,58px);margin-top:clamp(36px,3.8vw,48px)}
 .sec-badges{padding:clamp(30px,4vw,50px) 0}
 .badge-row{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px)}
 .badge{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid rgba(30,55,40,.08);border-radius:14px;padding:16px 20px;box-shadow:var(--shadow-s)}
