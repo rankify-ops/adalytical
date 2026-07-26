@@ -16,6 +16,18 @@
 @keyframes hpPulse{0%{box-shadow:0 0 0 0 rgba(38,138,83,.45)}70%{box-shadow:0 0 0 7px rgba(38,138,83,0)}100%{box-shadow:0 0 0 0 rgba(38,138,83,0)}}
 @media(prefers-reduced-motion:reduce){.hp-dot{animation:none}}
 
+/* ---- FULL-WIDTH HERO TRUST ROW (5 cards spanning the section) ---- */
+.hero-stats-full{margin-top:clamp(26px,3.2vw,44px)}
+.hero-stats-full .hstat{padding:14px 16px;gap:4px}
+.hero-stats-full .hs-val{font-size:clamp(1rem,1.3vw,1.2rem)}
+@media(max-width:760px){
+  .hero-stats-full{flex-wrap:wrap}
+  .hero-stats-full .hstat{flex:1 1 30%}
+}
+@media(max-width:460px){
+  .hero-stats-full .hstat{flex:1 1 45%}
+}
+
 /* ---- CTA RISK-REVERSAL MICROCOPY ---- */
 .cta-micro{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:14px;font-size:.82rem;color:var(--g600);font-weight:500}
 .cta-micro .cm-i{display:inline-flex;align-items:center;gap:5px}
