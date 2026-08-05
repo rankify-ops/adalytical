@@ -228,5 +228,7 @@
 
 /* ---- SECTION RHYTHM: alternate white/grey to break the block-after-block feel ---- */
 .sec-w{background:#fff}
+/* deepen the non-white framed sections a touch so the alternation clearly reads */
+.sec.framed:not(.sec-w){background:#ededeb}
 /* give card grids a touch more definition when they sit on white */
 .sec-w .pcard,.sec-w .cf-fc,.sec-w .cf-ic,.sec-w .team-card{border-color:rgba(30,55,40,.12)}
