@@ -25,8 +25,15 @@
   if (tog) tog.addEventListener('click', function () {
     setDrawer(!drawer.classList.contains('open'));
   });
-  if (drawer) drawer.querySelectorAll('a').forEach(function (a) {
-    a.addEventListener('click', function () { setDrawer(false); });
+  if (drawer) {
+    var closeBtn = drawer.querySelector('.mdrawer-close');
+    if (closeBtn) closeBtn.addEventListener('click', function () { setDrawer(false); });
+    drawer.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { setDrawer(false); });
+    });
+  }
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && drawer && drawer.classList.contains('open')) setDrawer(false);
   });
 
   // Marquee: clone logo set to always cover the viewport, keep two identical
