@@ -273,3 +273,7 @@
 .cf-bignum .bn{font-family:ui-monospace,Menlo,monospace;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;letter-spacing:-.04em;color:var(--forest);line-height:1}
 .cf-bignum .bn .accent{color:var(--brand)}
 .cf-bignum p{font-size:1.05rem;color:var(--g600);line-height:1.7;margin-top:14px}
+
+/* ---- subpage hero button group (primary call + secondary audit) ---- */
+.csp-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:26px}
+@media(max-width:520px){.csp-cta{flex-direction:column;align-items:stretch}.csp-cta .btn-p,.csp-cta .btn-s{width:100%;justify-content:center}}
