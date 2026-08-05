@@ -232,3 +232,44 @@
 .sec-cream:not(.sec-w){background:#ededeb}
 /* give card grids a touch more definition when they sit on white */
 .sec-w .pcard,.sec-w .cf-fc,.sec-w .cf-ic,.sec-w .team-card{border-color:rgba(30,55,40,.12)}
+
+/* ============================================================
+   SERVICE + INDUSTRY PAGE COMPONENTS (megaphone/bambrick/hustle-inspired)
+   ============================================================ */
+/* problem / agitation cards */
+.cf-prob{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,22px);margin-top:clamp(30px,4vw,46px)}
+.cf-pc{border:1px solid rgba(30,55,40,.1);border-radius:16px;padding:26px 24px;background:#fff;box-shadow:var(--shadow-s)}
+.cf-pc-ico{width:44px;height:44px;border-radius:12px;background:#f7ece8;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.cf-pc-ico svg{width:22px;height:22px;color:#c2603f;stroke-width:2}
+.cf-pc h4{font-size:1.05rem;color:var(--forest);margin-bottom:8px;letter-spacing:-.01em}
+.cf-pc p{font-size:.88rem;color:var(--g600);line-height:1.6}
+@media(max-width:820px){.cf-prob{grid-template-columns:1fr}.cf-pc{max-width:460px;margin:0 auto;width:100%}}
+
+/* industries-served tile grid */
+.cf-verts{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.2vw,14px);margin-top:clamp(28px,4vw,44px)}
+.cf-vert{display:flex;align-items:center;gap:11px;padding:15px 16px;border:1px solid rgba(30,55,40,.1);border-radius:12px;background:#fff;box-shadow:var(--shadow-s);transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.cf-vert:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.cf-vert svg{width:20px;height:20px;color:var(--brand);flex-shrink:0;stroke-width:1.8}
+.cf-vert span{font-weight:600;font-size:.9rem;color:var(--forest);letter-spacing:-.01em}
+@media(max-width:820px){.cf-verts{grid-template-columns:1fr 1fr}}
+@media(max-width:440px){.cf-verts{grid-template-columns:1fr}}
+
+/* detailed case study block (with placeholder support) */
+.cf-case{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;align-items:stretch;margin-top:clamp(30px,4vw,46px);background:#fff;border:1px solid rgba(30,55,40,.1);border-radius:20px;overflow:hidden;box-shadow:var(--shadow-l)}
+.cf-case-img{background:linear-gradient(150deg,#17352a,#0d1f15);display:flex;align-items:center;justify-content:center;position:relative;min-height:280px}
+.cf-case-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cf-case-ph{color:rgba(255,255,255,.45);font-family:ui-monospace,Menlo,monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;text-align:center;padding:0 20px}
+.cf-case-body{padding:clamp(28px,3.2vw,44px)}
+.cf-case-tag{font-family:ui-monospace,Menlo,monospace;font-size:.66rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--brand);font-weight:700}
+.cf-case-body h3{font-size:clamp(1.3rem,2vw,1.7rem);color:var(--forest);letter-spacing:-.02em;margin:8px 0 14px}
+.cf-case-body p{font-size:.95rem;color:var(--g600);line-height:1.7;margin-bottom:20px}
+.cf-case-stats{display:flex;gap:clamp(20px,3vw,44px);flex-wrap:wrap;padding-top:20px;border-top:1px solid rgba(30,55,40,.08)}
+.cf-case-stat b{display:block;font-family:ui-monospace,Menlo,monospace;font-size:clamp(1.5rem,2.4vw,2rem);font-weight:700;color:var(--brand);letter-spacing:-.03em;line-height:1}
+.cf-case-stat span{font-size:.74rem;color:var(--g500);margin-top:5px;display:block}
+@media(max-width:760px){.cf-case{grid-template-columns:1fr}.cf-case-img{min-height:200px}}
+
+/* big-number social-proof strip */
+.cf-bignum{text-align:center;max-width:760px;margin:0 auto}
+.cf-bignum .bn{font-family:ui-monospace,Menlo,monospace;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;letter-spacing:-.04em;color:var(--forest);line-height:1}
+.cf-bignum .bn .accent{color:var(--brand)}
+.cf-bignum p{font-size:1.05rem;color:var(--g600);line-height:1.7;margin-top:14px}
