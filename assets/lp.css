@@ -225,3 +225,8 @@
 .csx-more{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:.85rem;font-weight:700;color:var(--brand)}
 .csx-more svg{width:15px;height:15px}
 @media(max-width:720px){.cs-index{grid-template-columns:1fr}}
+
+/* ---- SECTION RHYTHM: alternate white/grey to break the block-after-block feel ---- */
+.sec-w{background:#fff}
+/* give card grids a touch more definition when they sit on white */
+.sec-w .pcard,.sec-w .cf-fc,.sec-w .cf-ic,.sec-w .team-card{border-color:rgba(30,55,40,.12)}
