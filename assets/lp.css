@@ -184,3 +184,44 @@
 .cf-ic-stat b{font-family:ui-monospace,Menlo,monospace;font-size:1.4rem;font-weight:700;color:var(--brand);letter-spacing:-.02em}
 .cf-ic-stat span{font-size:.78rem;color:var(--g500)}
 @media(max-width:820px){.cf-ind{grid-template-columns:1fr}.cf-ic{max-width:460px;margin:0 auto;width:100%}}
+
+/* ============================================================
+   SUBPAGES (services, about, industries, case-studies index)
+   ============================================================ */
+.csp-eyebrow .chip-plus{margin-right:2px}
+/* alternating service rows */
+.svc{padding:clamp(40px,6vw,78px) 0}
+.svc-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(36px,5vw,72px);align-items:center;max-width:1100px;margin:0 auto}
+.svc-grid.rev .svc-copy{order:2}
+.svc-num{font-family:ui-monospace,Menlo,monospace;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand);font-weight:700}
+.svc-copy h2{font-size:clamp(1.6rem,2.6vw,2.3rem);color:var(--forest);letter-spacing:-.03em;margin:10px 0 14px;line-height:1.15}
+.svc-copy p{font-size:1rem;color:var(--g600);line-height:1.7;margin-bottom:22px}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:26px}
+.svc-list li{display:flex;align-items:flex-start;gap:11px;font-size:.94rem;color:var(--forest);font-weight:500;line-height:1.45}
+.svc-list li svg{width:18px;height:18px;color:var(--brand);stroke-width:2.4;flex-shrink:0;margin-top:2px}
+.svc-link{display:inline-flex;align-items:center;gap:7px;font-size:.9rem;font-weight:700;color:var(--brand)}
+.svc-link svg{width:16px;height:16px;transition:transform .25s}
+.svc-link:hover svg{transform:translateX(4px)}
+.svc-viz .pm{box-shadow:var(--shadow-l)}
+@media(max-width:820px){.svc-grid{grid-template-columns:1fr;gap:30px}.svc-grid.rev .svc-copy{order:0}.svc-viz{max-width:440px;margin:0 auto}}
+
+/* prose (about page) */
+.prose{max-width:720px;margin:0 auto}
+.prose p{font-size:1.05rem;color:var(--g700);line-height:1.8;margin-bottom:20px}
+.prose p strong{color:var(--forest);font-weight:700}
+.prose h3{font-size:clamp(1.3rem,2vw,1.7rem);color:var(--forest);letter-spacing:-.02em;margin:36px 0 14px}
+
+/* case-studies index grid */
+.cs-index{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,2.4vw,28px);margin-top:clamp(30px,4vw,46px)}
+.csx{display:block;border:1px solid rgba(30,55,40,.1);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow-s);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.csx:hover{transform:translateY(-4px);box-shadow:var(--shadow-l)}
+.csx-img{aspect-ratio:16/10;background:#dfe3da;position:relative;overflow:hidden}
+.csx-img img{width:100%;height:100%;object-fit:cover}
+.csx-stat{position:absolute;left:16px;bottom:16px;background:rgba(6,15,10,.72);backdrop-filter:blur(6px);color:#fff;font-family:ui-monospace,Menlo,monospace;font-weight:700;font-size:1.05rem;padding:6px 14px;border-radius:100px}
+.csx-body{padding:22px 24px 26px}
+.csx-tag{font-family:ui-monospace,Menlo,monospace;font-size:.66rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--brand);font-weight:700}
+.csx-body h3{font-size:1.15rem;color:var(--forest);margin:8px 0 8px;letter-spacing:-.01em}
+.csx-body p{font-size:.9rem;color:var(--g600);line-height:1.6}
+.csx-more{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-size:.85rem;font-weight:700;color:var(--brand)}
+.csx-more svg{width:15px;height:15px}
+@media(max-width:720px){.cs-index{grid-template-columns:1fr}}
