@@ -143,7 +143,7 @@ img,svg{max-width:100%;display:block}
 .chip-plus{width:22px;height:22px;border-radius:50%;background:var(--forest);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:.95rem;font-weight:700;line-height:1;flex-shrink:0}
 .chip-plus.lite{background:rgba(255,255,255,.14);color:#fff}
 .shead-brand{display:block;font-size:.95rem;font-weight:700;color:var(--g950);letter-spacing:-.01em;margin-bottom:14px}
-.shead-t{font-size:clamp(2rem,3.6vw,3.3rem);font-weight:500;line-height:1.08;letter-spacing:-.03em;color:var(--forest);margin:0}
+.shead-t{font-size:clamp(2rem,3.6vw,3.3rem);font-weight:600;line-height:1.08;letter-spacing:-.03em;color:var(--forest);margin:0}
 .shead-t .dim{color:var(--g400);display:block}
 
 /* ================ HERO ================ */
