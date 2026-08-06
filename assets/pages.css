@@ -43,7 +43,7 @@
 .csp-hero p{font-size:clamp(1rem,1.2vw,1.18rem);color:var(--g600);line-height:1.7;max-width:640px;margin:0 auto}
 /* featured video */
 .csp-vid{max-width:var(--ctr-max);margin:0 auto;padding:0 clamp(22px,4vw,64px)}
-.vid-panel{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:linear-gradient(150deg,#16261c 0%,#0c1712 55%,#0a120d 100%);box-shadow:var(--shadow-l)}
+.vid-panel{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;background:linear-gradient(150deg,#17352a 0%,#132a1e 55%,#0d1f15 100%);box-shadow:var(--shadow-l)}
 .vid-panel::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 42%,rgba(38,138,83,.16),transparent 62%);pointer-events:none}
 .vid-panel iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .vid-play{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;box-shadow:0 12px 40px rgba(38,138,83,.5);border:none}
@@ -58,7 +58,7 @@
 /* body: sticky testimonial + prose */
 .csp-body{max-width:var(--ctr-max);margin:0 auto;padding:clamp(46px,6vw,80px) clamp(22px,4vw,64px);display:grid;grid-template-columns:300px 1fr;gap:clamp(36px,5vw,72px);align-items:start}
 .csp-phone{position:sticky;top:96px}
-.phone-frame{position:relative;aspect-ratio:9/19;border-radius:30px;overflow:hidden;background:linear-gradient(160deg,#16261c,#0a120d);box-shadow:var(--shadow-l);border:1px solid rgba(30,55,40,.1)}
+.phone-frame{position:relative;aspect-ratio:9/19;border-radius:30px;overflow:hidden;background:linear-gradient(160deg,#17352a,#0d1f15);box-shadow:var(--shadow-l);border:1px solid rgba(30,55,40,.1)}
 .phone-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .phone-notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:70px;height:5px;border-radius:3px;background:rgba(255,255,255,.25);z-index:2}
 .phone-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .3s;border:none}
