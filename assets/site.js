@@ -67,7 +67,11 @@
     // build only once the logo images have real dimensions, so the width (and speed) is deterministic
     var imgs = Array.prototype.slice.call(track.querySelectorAll('img'));
     var total = imgs.length, loaded = 0, started = false;
-    function go() { if (started) return; started = true; measure(); build(); }
+    function go() {
+      if (started) return; started = true;
+      // measure after a frame so the layout has settled with the loaded image sizes
+      requestAnimationFrame(function () { requestAnimationFrame(function () { measure(); build(); }); });
+    }
     if (!total) { go(); }
     else {
       imgs.forEach(function (img) {
