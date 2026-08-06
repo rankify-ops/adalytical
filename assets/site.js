@@ -505,3 +505,34 @@
   });
   window.AdalyticalOpenForm = open;
 })();
+
+/* ---- Spotlight + border-glow card grids (vanilla "Magic Bento") ---- */
+(function () {
+  var grids = document.querySelectorAll('.glow-grid');
+  if (!grids.length || !window.matchMedia || matchMedia('(pointer:fine)').matches === false) return;
+  grids.forEach(function (grid) {
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.why-card'));
+    if (!cards.length) return;
+    var mx = 0, my = 0, raf = null;
+    function paint() {
+      raf = null;
+      for (var i = 0; i < cards.length; i++) {
+        var card = cards[i], r = card.getBoundingClientRect();
+        card.style.setProperty('--gx', (mx - r.left) + 'px');
+        card.style.setProperty('--gy', (my - r.top) + 'px');
+        var dx = mx - (r.left + r.width / 2), dy = my - (r.top + r.height / 2);
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var reach = Math.max(r.width, r.height) * 0.9 + 240;
+        var g = 1 - dist / reach;
+        card.style.setProperty('--glow', (g > 0 ? g : 0).toFixed(3));
+      }
+    }
+    grid.addEventListener('pointermove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      if (!raf) raf = requestAnimationFrame(paint);
+    });
+    grid.addEventListener('pointerleave', function () {
+      for (var i = 0; i < cards.length; i++) cards[i].style.setProperty('--glow', '0');
+    });
+  });
+})();

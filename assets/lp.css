@@ -351,3 +351,14 @@
   .csp-hero.has-fig .csp-cta{justify-content:center}
   .csp-hero.has-fig .csp-hero-fig{max-width:560px;margin:0 auto}
 }
+
+/* ---- Spotlight + border-glow card grid (vanilla "Magic Bento", brand green) ---- */
+.glow-grid .why-card>*{position:relative;z-index:1}
+.glow-grid .why-card::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:radial-gradient(240px circle at var(--gx,50%) var(--gy,50%),rgba(38,138,83,.10),transparent 62%);
+  opacity:var(--glow,0);transition:opacity .4s var(--ease)}
+.glow-grid .why-card::before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;padding:1px;
+  background:radial-gradient(260px circle at var(--gx,50%) var(--gy,50%),rgba(38,138,83,.65),rgba(61,184,120,.18) 42%,transparent 66%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;
+  opacity:var(--glow,0);transition:opacity .4s var(--ease)}
