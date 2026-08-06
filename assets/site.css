@@ -100,7 +100,7 @@ img,svg{max-width:100%;display:block}
 .mob-tog.open .mob-bars span:nth-child(3){transform:translateY(-5px) rotate(-45deg)}
 
 /* mobile drawer */
-.mdrawer{position:fixed;inset:0;z-index:200;background:linear-gradient(165deg,#17352a 0%,#0d1f15 100%);display:flex;flex-direction:column;padding:16px 20px calc(20px + env(safe-area-inset-bottom));opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .3s ease,transform .3s ease,visibility .3s;overflow-y:auto}
+.mdrawer{position:fixed;inset:0;z-index:200;background:linear-gradient(150deg,#17352a 0%,var(--forest-2) 55%,#0d1f15 100%);display:flex;flex-direction:column;padding:16px 20px calc(20px + env(safe-area-inset-bottom));opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .3s ease,transform .3s ease,visibility .3s;overflow-y:auto}
 .mdrawer.open{opacity:1;visibility:visible;transform:translateY(0)}
 .mdrawer-top{display:flex;align-items:center;justify-content:space-between;padding:6px 4px 18px;margin-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12)}
 .mdrawer-top .logo-img{height:26px;width:auto}
