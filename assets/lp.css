@@ -319,5 +319,5 @@
 @media(max-width:520px){.vstack{grid-template-columns:1fr}.vs-item{border-right:none!important;border-top:1px solid rgba(30,55,40,.08)!important}.vs-item:first-child{border-top:none!important}}
 
 /* ---- AI-generated illustration panels (process/feature cards) ---- */
-.pillus.pillus-img{background:#fff;padding:0;overflow:hidden;align-items:stretch;min-height:0}
-.pillus.pillus-img img{width:100%;height:auto;display:block;border-radius:14px}
+.pillus.pillus-img{background:#eef0ea;padding:14px 14px 0;overflow:visible;align-items:stretch;min-height:0}
+.pillus.pillus-img img{width:100%;height:auto;display:block}
