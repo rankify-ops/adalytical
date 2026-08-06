@@ -321,3 +321,18 @@
 /* ---- AI-generated illustration panels (process/feature cards) ---- */
 .pillus.pillus-img{background:#eef0ea;padding:14px 14px 0;overflow:visible;align-items:stretch;min-height:0}
 .pillus.pillus-img img{width:100%;height:auto;display:block}
+
+/* ---- Real illustrations in service rows + dedicated-page heroes ---- */
+.svc-viz .svc-fig{background:#eef0ea;border:1px solid rgba(30,55,40,.06);border-radius:20px;padding:clamp(14px,1.6vw,22px);box-shadow:var(--shadow-l)}
+.svc-viz .svc-fig img{width:100%;height:auto;display:block}
+.csp-hero-fig{margin:clamp(30px,4vw,50px) auto 0;max-width:760px;background:#eef0ea;border:1px solid rgba(30,55,40,.06);border-radius:22px;padding:clamp(16px,2vw,26px)}
+.csp-hero-fig img{width:100%;height:auto;display:block}
+/* illustration figure inside a two-col band (guarantee / cta) */
+.fig-panel{background:#eef0ea;border:1px solid rgba(30,55,40,.06);border-radius:22px;padding:clamp(16px,2vw,26px)}
+.fig-panel img{width:100%;height:auto;display:block}
+
+/* guarantee emblem + case-slot used as a light illustration panel */
+.grt-emblem{max-width:300px;margin:clamp(26px,3vw,40px) auto 0;background:#eef0ea;border:1px solid rgba(30,55,40,.06);border-radius:22px;padding:20px}
+.grt-emblem img{width:100%;height:auto;display:block}
+.cf-case-img.is-fig{background:#eef0ea;padding:clamp(18px,2.4vw,30px)}
+.cf-case-img.is-fig img{position:static;width:100%;height:auto;object-fit:contain}
