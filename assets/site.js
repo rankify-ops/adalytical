@@ -395,3 +395,113 @@
   var yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
 })();
+
+/* ================ MULTI-STEP LEAD FORM MODAL ================ */
+(function () {
+  var FORM_ENDPOINT = ''; // <-- paste a Formspree endpoint (https://formspree.io/f/xxxx) to receive leads by email
+
+  var IC = {
+    cart:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6h15l-1.5 9h-12z" stroke-linejoin="round"/><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/></svg>',
+    wrench:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M14.5 5.5a3.5 3.5 0 0 0-4.9 4.9L4 16v4h4l5.6-5.6a3.5 3.5 0 0 0 4.9-4.9L16 12l-2-2z" stroke-linejoin="round"/></svg>',
+    code:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    grid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
+    check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    warn:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3 2 20h20z" stroke-linejoin="round"/><path d="M12 10v4M12 17h.01" stroke-linecap="round"/></svg>',
+    q:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 0 1 4.5 1.5c0 1.5-2 2-2 3M12 17h.01" stroke-linecap="round"/></svg>',
+    plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 9v6M9 12h6" stroke-linecap="round"/></svg>'
+  };
+  var ARROW = '<svg class="mo-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  function opt(val, icon) { return '<button type="button" class="mform-opt" data-val="' + val + '"><span class="mo-ico">' + icon + '</span>' + val + ARROW + '</button>'; }
+  var BACK = '<button type="button" class="mform-back"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>Back</button>';
+
+  var html =
+    '<div class="mform" role="dialog" aria-modal="true" aria-label="Book a strategy call">' +
+      '<div class="mform-head"><span class="mform-brand">Book a strategy call</span><div class="mform-progress"><i></i></div><button type="button" class="mform-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12" stroke-linecap="round"/></svg></button></div>' +
+      '<div class="mform-body">' +
+        '<div class="mform-step active">' +
+          '<span class="mform-eyebrow">Step 1 of 3</span><h3 class="mform-q">What do you need Google Ads for?</h3><p class="mform-sub">So we can tailor your strategy to how you actually make money.</p>' +
+          '<div class="mform-opts" data-key="goal">' + opt('E-commerce store',IC.cart) + opt('Service-based business',IC.wrench) + opt('SaaS / software',IC.code) + opt('Something else',IC.grid) + '</div>' +
+        '</div>' +
+        '<div class="mform-step">' +
+          '<span class="mform-eyebrow">Step 2 of 3</span><h3 class="mform-q">Is your website built to convert customers?</h3><p class="mform-sub">The best campaign still fails on a page that does not convert.</p>' +
+          '<div class="mform-opts" data-key="website">' + opt('Yes, it converts well',IC.check) + opt('No, it needs work',IC.warn) + opt('Not sure',IC.q) + opt('I need a new site',IC.plus) + '</div>' +
+          '<div class="mform-actions">' + BACK + '</div>' +
+        '</div>' +
+        '<div class="mform-step">' +
+          '<span class="mform-eyebrow">Step 3 of 3</span><h3 class="mform-q">Where should we send your strategy?</h3><div class="mform-summary"></div>' +
+          '<form class="mform-form" novalidate>' +
+            '<div class="mform-field"><label>Your name</label><input name="name" type="text" placeholder="Jane Smith" autocomplete="name"></div>' +
+            '<div class="mform-field"><label>Email</label><input name="email" type="email" placeholder="jane@company.com" autocomplete="email"></div>' +
+            '<div class="mform-field"><label>Website</label><input name="site" type="text" placeholder="yourcompany.com" autocomplete="url"></div>' +
+            '<div class="mform-field"><label>Monthly ad spend (optional)</label><select name="spend"><option value="">Select a range</option><option>Not running ads yet</option><option>Under $5k / mo</option><option>$5k to $20k / mo</option><option>$20k to $50k / mo</option><option>$50k+ / mo</option></select></div>' +
+            '<div class="mform-field"><label>Anything else? (optional)</label><textarea name="msg" placeholder="Tell us a bit about your goals..."></textarea></div>' +
+            '<div class="mform-actions">' + BACK + '<button type="submit" class="mform-submit">Book my call <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>' +
+          '</form>' +
+        '</div>' +
+        '<div class="mform-step"><div class="mform-succ"><div class="mform-succ-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M20 6 9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h3>You are all set.</h3><p>Thanks &mdash; we have your details. An ex-Google strategist will be in touch within one business day to lock in your call.</p><button type="button" class="mform-submit mform-done" style="margin:0 auto">Done</button></div></div>' +
+      '</div>' +
+    '</div>';
+
+  var overlay = document.createElement('div');
+  overlay.className = 'mform-overlay';
+  overlay.innerHTML = html;
+  document.body.appendChild(overlay);
+
+  var steps = overlay.querySelectorAll('.mform-step');
+  var bar = overlay.querySelector('.mform-progress i');
+  var summary = overlay.querySelector('.mform-summary');
+  var pct = [33, 66, 100, 100];
+  var data = {};
+  var cur = 0;
+
+  function show(i) {
+    cur = i;
+    for (var k = 0; k < steps.length; k++) steps[k].classList.toggle('active', k === i);
+    bar.style.width = pct[i] + '%';
+    if (i === 2) {
+      summary.innerHTML = (data.goal ? '<span class="mform-chip">' + data.goal + '</span>' : '') + (data.website ? '<span class="mform-chip">' + data.website + '</span>' : '');
+    }
+  }
+  function open() { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; show(0); }
+  function close() { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+  overlay.querySelectorAll('.mform-opts').forEach(function (grp) {
+    grp.addEventListener('click', function (e) {
+      var b = e.target.closest('.mform-opt'); if (!b) return;
+      grp.querySelectorAll('.mform-opt').forEach(function (o) { o.classList.remove('sel'); });
+      b.classList.add('sel');
+      data[grp.getAttribute('data-key')] = b.getAttribute('data-val');
+      setTimeout(function () { show(cur + 1); }, 170);
+    });
+  });
+  overlay.querySelectorAll('.mform-back').forEach(function (b) { b.addEventListener('click', function () { if (cur > 0) show(cur - 1); }); });
+  overlay.querySelector('.mform-close').addEventListener('click', close);
+  overlay.querySelector('.mform-done').addEventListener('click', close);
+  overlay.addEventListener('mousedown', function (e) { if (e.target === overlay) close(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('open')) close(); });
+
+  var form = overlay.querySelector('.mform-form');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.name.value.trim(), email = form.email.value.trim(), ok = true;
+    if (!name) { form.name.classList.add('err'); ok = false; } else form.name.classList.remove('err');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { form.email.classList.add('err'); ok = false; } else form.email.classList.remove('err');
+    if (!ok) return;
+    var payload = { goal: data.goal || '', website_state: data.website || '', name: name, email: email, site: form.site.value.trim(), monthly_spend: form.spend.value, message: form.msg.value.trim(), page: location.href };
+    var btn = form.querySelector('.mform-submit'); btn.disabled = true; btn.textContent = 'Sending...';
+    function done() { show(3); }
+    if (FORM_ENDPOINT) {
+      fetch(FORM_ENDPOINT, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) }).then(done).catch(done);
+    } else {
+      console.log('[Adalytical lead]', payload); // no endpoint wired yet — visible for testing
+      setTimeout(done, 450);
+    }
+  });
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a'); if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('#book') !== -1) { e.preventDefault(); open(); }
+  });
+  window.AdalyticalOpenForm = open;
+})();

@@ -529,3 +529,54 @@ img,svg{max-width:100%;display:block}
   .cta-btns .btn-p{width:100%;justify-content:center;white-space:nowrap}
   .footer-grid{grid-template-columns:1fr}
 }
+
+/* ================ MULTI-STEP LEAD FORM MODAL ================ */
+.mform-overlay{position:fixed;inset:0;z-index:300;background:rgba(13,31,21,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:18px;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s;overflow-y:auto}
+.mform-overlay.open{opacity:1;visibility:visible}
+.mform{background:#fff;border-radius:24px;max-width:540px;width:100%;box-shadow:0 30px 90px rgba(8,20,14,.42);position:relative;overflow:hidden;transform:translateY(14px) scale(.98);transition:transform .3s var(--ease);display:flex;flex-direction:column;max-height:calc(100dvh - 36px)}
+.mform-overlay.open .mform{transform:none}
+.mform-head{display:flex;align-items:center;gap:14px;padding:18px 20px 16px;border-bottom:1px solid rgba(30,55,40,.08);flex-shrink:0}
+.mform-brand{font-weight:700;color:var(--forest);font-size:.92rem;letter-spacing:-.01em;white-space:nowrap}
+.mform-progress{flex:1;height:5px;background:var(--g200);border-radius:3px;overflow:hidden}
+.mform-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--brand),var(--brand-2));border-radius:3px;transition:width .4s var(--ease)}
+.mform-close{width:36px;height:36px;border-radius:50%;border:1px solid rgba(30,55,40,.12);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--g600);flex-shrink:0;transition:background .2s}
+.mform-close:hover{background:var(--g100)}
+.mform-close svg{width:18px;height:18px}
+.mform-body{padding:24px 22px 26px;overflow-y:auto}
+.mform-step{display:none}
+.mform-step.active{display:block;animation:mfIn .35s var(--ease)}
+@keyframes mfIn{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+.mform-eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--brand);font-weight:700}
+.mform-q{font-size:clamp(1.25rem,2.4vw,1.55rem);color:var(--forest);letter-spacing:-.02em;margin:9px 0 4px;line-height:1.2;font-weight:600}
+.mform-sub{font-size:.92rem;color:var(--g600);line-height:1.5}
+.mform-opts{display:grid;gap:10px;margin-top:20px}
+.mform-opt{display:flex;align-items:center;gap:13px;padding:15px 16px;border:1.5px solid rgba(30,55,40,.14);border-radius:14px;cursor:pointer;font-weight:600;font-size:1rem;color:var(--forest);background:#fff;text-align:left;transition:border-color .2s,background .2s;font-family:inherit}
+.mform-opt:hover{border-color:var(--brand);background:var(--brand-light)}
+.mform-opt.sel{border-color:var(--brand);background:var(--brand-light)}
+.mform-opt .mo-ico{width:34px;height:34px;border-radius:9px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background .2s}
+.mform-opt:hover .mo-ico,.mform-opt.sel .mo-ico{background:#fff}
+.mform-opt .mo-ico svg{width:17px;height:17px;color:var(--brand);stroke-width:1.9}
+.mform-opt .mo-arrow{margin-left:auto;width:18px;height:18px;color:var(--g300);flex-shrink:0;transition:color .2s}
+.mform-opt:hover .mo-arrow,.mform-opt.sel .mo-arrow{color:var(--brand)}
+.mform-field{margin-top:13px}
+.mform-field label{display:block;font-size:.8rem;font-weight:600;color:var(--g700);margin-bottom:6px}
+.mform-field input,.mform-field select,.mform-field textarea{width:100%;padding:13px 15px;border:1.5px solid rgba(30,55,40,.14);border-radius:12px;font-family:inherit;font-size:.95rem;color:var(--forest);background:#fff;transition:border-color .2s}
+.mform-field input:focus,.mform-field select:focus,.mform-field textarea:focus{outline:none;border-color:var(--brand)}
+.mform-field input.err,.mform-field select.err{border-color:#d9654a}
+.mform-field textarea{resize:vertical;min-height:66px}
+.mform-summary{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 2px}
+.mform-chip{font-size:.72rem;font-weight:600;color:var(--brand-dark);background:var(--brand-light);border:1px solid rgba(38,138,83,.2);padding:4px 11px;border-radius:50px}
+.mform-actions{display:flex;gap:10px;margin-top:22px;align-items:center}
+.mform-back{background:none;border:none;color:var(--g600);font-weight:600;font-size:.92rem;cursor:pointer;font-family:inherit;padding:10px 4px;display:inline-flex;align-items:center;gap:5px}
+.mform-back:hover{color:var(--forest)}
+.mform-back svg{width:15px;height:15px}
+.mform-submit{margin-left:auto;display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;border:none;padding:14px 26px;border-radius:50px;font-weight:700;font-size:.95rem;cursor:pointer;font-family:inherit;box-shadow:0 8px 22px rgba(38,138,83,.28);transition:transform .2s}
+.mform-submit:hover{transform:translateY(-1px)}
+.mform-submit:disabled{opacity:.6;cursor:default;transform:none}
+.mform-submit svg{width:17px;height:17px}
+.mform-succ{text-align:center;padding:14px 0 6px}
+.mform-succ-ic{width:64px;height:64px;border-radius:50%;background:var(--brand-light);display:flex;align-items:center;justify-content:center;margin:0 auto 18px}
+.mform-succ-ic svg{width:32px;height:32px;color:var(--brand);stroke-width:2.6}
+.mform-succ h3{font-size:1.45rem;color:var(--forest);margin-bottom:10px}
+.mform-succ p{font-size:.95rem;color:var(--g600);line-height:1.6;max-width:360px;margin:0 auto 22px}
+@media(max-width:480px){.mform{border-radius:20px}.mform-actions{gap:6px}.mform-submit{padding:14px 20px}}
