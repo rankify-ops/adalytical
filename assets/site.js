@@ -42,35 +42,49 @@
     var track = document.querySelector('.marquee-track');
     if (!track) return;
     var kids = Array.prototype.slice.call(track.children);
-    var base = kids.slice(0, Math.floor(kids.length / 2)).map(function (n) { return n.cloneNode(true); });
+    var setCount = Math.max(1, Math.floor(kids.length / 2)); // markup lists the logos twice
+    var base = kids.slice(0, setCount).map(function (n) { return n.cloneNode(true); });
     if (!base.length) return;
-    function appendSet() {
-      base.forEach(function (n) { track.appendChild(n.cloneNode(true)); });
-    }
+    var SPEED = 70; // px per second — constant regardless of how many copies fit
+    var setW = 0;   // width of one logo set (measured once, after images load)
+    function appendSet() { base.forEach(function (n) { track.appendChild(n.cloneNode(true)); }); }
     function build() {
+      if (!setW) return;
       track.style.animation = 'none';
       track.innerHTML = '';
-      appendSet();
-      var setW = track.getBoundingClientRect().width;
-      if (!setW) { track.style.animation = ''; return; }
-      var copies = Math.max(1, Math.ceil((window.innerWidth * 1.15) / setW));
-      for (var c = 1; c < copies; c++) appendSet();
-      var halfW = track.getBoundingClientRect().width;
-      Array.prototype.slice.call(track.children).forEach(function (n) {
-        var clone = n.cloneNode(true);
-        clone.setAttribute('aria-hidden', 'true');
-        track.appendChild(clone);
-      });
+      // enough sets to comfortably cover the viewport, then duplicate the lot for a seamless -50% loop
+      var sets = Math.max(2, Math.ceil((window.innerWidth * 1.25) / setW));
+      var i;
+      for (i = 0; i < sets; i++) appendSet();
+      var contentW = setW * sets;
+      for (i = 0; i < sets; i++) appendSet();
+      Array.prototype.slice.call(track.children).forEach(function (n) { n.setAttribute('aria-hidden', 'true'); });
+      // duration derived from real width => identical scroll speed on every load
       track.style.animation = '';
-      track.style.animationDuration = Math.max(18, Math.round(halfW / 70)) + 's';
+      track.style.animationDuration = (contentW / SPEED).toFixed(2) + 's';
     }
-    build();
-    window.addEventListener('load', build);
+    function measure() { setW = track.getBoundingClientRect().width / 2; if (setW < 10) setW = 0; }
+    // build only once the logo images have real dimensions, so the width (and speed) is deterministic
+    var imgs = Array.prototype.slice.call(track.querySelectorAll('img'));
+    var total = imgs.length, loaded = 0, started = false;
+    function go() { if (started) return; started = true; measure(); build(); }
+    if (!total) { go(); }
+    else {
+      imgs.forEach(function (img) {
+        if (img.complete && img.naturalWidth) { if (++loaded >= total) go(); }
+        else {
+          var h = function () { if (++loaded >= total) go(); };
+          img.addEventListener('load', h, { once: true });
+          img.addEventListener('error', h, { once: true });
+        }
+      });
+      setTimeout(go, 3000); // safety net if an image never fires
+    }
     var lastW = window.innerWidth, rt;
     window.addEventListener('resize', function () {
       clearTimeout(rt);
       rt = setTimeout(function () {
-        if (window.innerWidth !== lastW) { lastW = window.innerWidth; build(); }
+        if (window.innerWidth !== lastW && setW) { lastW = window.innerWidth; build(); }
       }, 250);
     });
   })();
